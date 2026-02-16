@@ -1,0 +1,5 @@
+@import "Root/root";
+@import "transfer/transfer__mobile";
+@include from(tablet){
+  @import "transfer/transfer__desktop";
+}

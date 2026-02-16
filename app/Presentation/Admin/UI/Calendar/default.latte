@@ -1,0 +1,275 @@
+{var $css = 'calendar'}
+{var $js = 'calendar'}
+{block content}
+
+    <div id="adminCalendar"
+         class="admin-calendar"
+         data-month="{$currentMonth|date:'Y-m-01'}"
+         data-events="{=json_encode($eventsByDate)}">
+
+        {* LEVÁ STRANA – měsíční kalendář *}
+    <div class="admin-calendar__left">
+                <div class="admin-calendar__header">
+                    <button type="button" class="admin-calendar__nav" data-calendar-prev>
+                        ←
+                    </button>
+
+                    <div class="admin-calendar__month" data-calendar-label>
+                        <!-- sem doplní JS (např. prosinec 2025) -->
+                    </div>
+
+                    <button type="button" class="admin-calendar__nav" data-calendar-next>
+                        →
+                    </button>
+                </div>
+
+                <div class="admin-calendar__weekdays">
+                    <span>Po</span>
+                    <span>Út</span>
+                    <span>St</span>
+                    <span>Čt</span>
+                    <span>Pá</span>
+                    <span>So</span>
+                    <span>Ne</span>
+                </div>
+
+                <div class="admin-calendar__grid" data-calendar-grid>
+                    <!-- generuje JS -->
+                </div>
+    </div>
+
+    {* PRAVÁ STRANA – detail dne *}
+        <div class="admin-calendar__right">
+            <h2 class="admin-calendar-detail__date" data-calendar-detail-date>
+                <!-- sem doplní JS (např. 8. prosince 2025) -->
+            </h2>
+
+            <div class="admin-calendar-detail__content" data-calendar-detail-list>
+                <p class="admin-calendar-detail__empty">
+                    Žádné výlety na tento den.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    {if $showDetailModal && $detailReservation}
+        <div class="reservations-modal-backdrop">
+            <div class="reservations-modal reservations-modal--detail">
+                <div class="reservations-modal__header">
+                    <h2>Detail rezervace</h2>
+                    <a n:href="this" class="reservations-modal__close">×</a>
+                </div>
+
+                <div class="reservation-detail">
+
+                    <section class="reservation-detail__section">
+                        <h3>Zákazník</h3>
+
+                        <div class="reservation-detail__row">
+                            <div class="reservation-detail__field">
+                                <div class="reservation-detail__label">Jméno:</div>
+                                <div class="reservation-detail__value">
+                                    {$detailReservation->customer_name}
+                                </div>
+                            </div>
+
+                            <div class="reservation-detail__field">
+                                <div class="reservation-detail__label">Email:</div>
+                                <div class="reservation-detail__value">
+                                    {$detailReservation->customer_email}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reservation-detail__row">
+                            <div class="reservation-detail__field">
+                                <div class="reservation-detail__label">Telefon:</div>
+                                <div class="reservation-detail__value">
+                                    {$detailReservation->customer_phone}
+                                </div>
+                            </div>
+
+                            <div class="reservation-detail__field">
+                                <div class="reservation-detail__label">Počet osob:</div>
+                                <div class="reservation-detail__value">
+                                    {$detailReservation->guests}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reservation-detail__row">
+                            <div class="reservation-detail__field">
+                                <div class="reservation-detail__label">Místo vyzvednutí:</div>
+                                <div class="reservation-detail__value">
+                                    {$detailReservation->pickup_point}
+                                </div>
+                            </div>
+
+                            <div class="reservation-detail__field">
+                                <div class="reservation-detail__label">Poznámka:</div>
+                                <div class="reservation-detail__value">
+                                    {$detailReservation->notes}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="reservation-detail__section">
+                        <h3>Výlet</h3>
+
+                        <div class="reservation-detail__row">
+                            <div class="reservation-detail__field reservation-detail__field--full">
+                                <div class="reservation-detail__label">Název:</div>
+                                <div class="reservation-detail__value">
+                                    <a n:href=":Front:Excursion:default $detailReservation->trip->id"
+                                            target="_blank"
+                                            class="reservation-detail__trip-link">
+                                        {$detailReservation->trip->title}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reservation-detail__row">
+                            <div class="reservation-detail__field">
+                                <div class="reservation-detail__label">Lokace:</div>
+                                <div class="reservation-detail__value">
+                                    {$detailReservation->trip->location}
+                                </div>
+                            </div>
+
+                            <div class="reservation-detail__field">
+                                <div class="reservation-detail__label">Délka:</div>
+                                <div class="reservation-detail__value">
+                                    {$detailReservation->trip->duration}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reservation-detail__row">
+                            <div class="reservation-detail__field">
+                                <div class="reservation-detail__label">Cena:</div>
+                                <div class="reservation-detail__value">
+                                    {$detailReservation->trip->price|number:0,',',' '} USD
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="reservation-detail__section">
+                        <h3>Rezervace</h3>
+
+                        <div class="reservation-detail__row">
+                            <div class="reservation-detail__field">
+                                <div class="reservation-detail__label">Datum:</div>
+                                <div class="reservation-detail__value">
+                                    {$detailReservation->date|date:'j. n. Y'}
+                                </div>
+                            </div>
+
+                            <div class="reservation-detail__field">
+                                <div class="reservation-detail__label">Status:</div>
+                                <div class="reservation-detail__value">
+                                <span class="reservation-status reservation-status--{$detailReservation->status}">
+                                    {if $detailReservation->status === 'confirm'}
+                                        Potvrzeno
+                                    {elseif $detailReservation->status === 'canceled'}
+                                        Zrušeno
+                                    {else}
+                                        Čeká
+                                    {/if}
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reservation-detail__row">
+                            <div class="reservation-detail__field reservation-detail__field--full">
+                                <div class="reservation-detail__label">Vytvořeno:</div>
+                                <div class="reservation-detail__value">
+                                    {$detailReservation->created_at|date:'j. n. Y, H:i'}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+            </div>
+        </div>
+    {/if}
+    {if $showTransferDetailModal && $detailTransfer}
+        <div class="tdm-backdrop" data-modal="transfer-detail">
+            <div class="tdm-modal" role="dialog" aria-modal="true" aria-label="Detail rezervace transferu">
+
+                <div class="tdm-header">
+                    <h2 class="tdm-title">Detail rezervace transferu</h2>
+                    <a n:href="this" class="tdm-close" aria-label="Zavřít" data-modal-close>×</a>
+                </div>
+
+                <div class="tdm-body">
+                    <div class="tdm-topgrid">
+                        <div class="tdm-block">
+                            <div class="tdm-label">Zákazník</div>
+                            <div class="tdm-strong">{$detailTransfer->customer_name}</div>
+                        </div>
+
+                        <div class="tdm-block tdm-block--right">
+                            <div class="tdm-label">Stav</div>
+                            <span class="tdm-badge tdm-badge--{$detailTransfer->status}">
+              {if $detailTransfer->status === 'confirm'}Potvrzeno
+              {elseif $detailTransfer->status === 'canceled'}Zrušeno
+              {else}Čeká{/if}
+            </span>
+                        </div>
+
+                        <div class="tdm-contact">
+                            <span class="tdm-ico" aria-hidden="true">✉️</span>
+                            <a href="mailto:{$detailTransfer->customer_email}" class="tdm-link">{$detailTransfer->customer_email}</a>
+                        </div>
+
+                        <div class="tdm-contact">
+                            <span class="tdm-ico" aria-hidden="true">📞</span>
+                            <a href="tel:{$detailTransfer->customer_phone}" class="tdm-link">{$detailTransfer->customer_phone}</a>
+                        </div>
+                    </div>
+
+                    <hr class="tdm-sep">
+
+                    <div class="tdm-meta">
+                        <div class="tdm-meta-item"><span class="tdm-ico">📅</span>
+                            <span>{$detailTransfer->pickup_date|date:'j. n. Y'}</span>
+                        </div>
+                        <div class="tdm-meta-item"><span class="tdm-ico">🕒</span>
+                            <span>{$detailTransfer->pickup_time->format('%H:%I')}</span>
+                        </div>
+                        <div class="tdm-meta-item"><span class="tdm-ico">👥</span>
+                            <span>{$detailTransfer->passagers} pasažérů</span>
+                        </div>
+                    </div>
+
+                    <hr class="tdm-sep">
+
+                    <div class="tdm-section">
+                        <div class="tdm-label">Trasa</div>
+                        <div class="tdm-route">
+                            <div class="tdm-route-row">
+                                <div class="tdm-route-k">Z:</div>
+                                <div class="tdm-route-v">{$detailTransfer->pickup_location}</div>
+                            </div>
+                            <div class="tdm-route-row">
+                                <div class="tdm-route-k">Do:</div>
+                                <div class="tdm-route-v">{$detailTransfer->dropoff_location}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tdm-footer">
+                        Vytvořeno: {$detailTransfer->created_at|date:'j. n. Y H:i'}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {/if}
+
+
+{/block}

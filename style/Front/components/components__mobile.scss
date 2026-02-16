@@ -1,0 +1,106 @@
+/* =========================
+   SITE FOOTER – MOBILE FIRST
+   ========================= */
+.site-footer {
+  padding: 24px 0 16px;       /* mobilní paddingy */
+  background-color: $footer-bg;
+  border-top: 1px solid $footer-border;
+  font-size: 14px;
+  color: $footer-text;
+}
+
+.site-footer__inner {
+  padding: 2rem 1rem;         /* mobilní paddingy */
+  margin: 0 auto 18px;
+
+  display: grid;
+  grid-template-columns: 1fr; /* mobil: 1 sloupec */
+  gap: 24px;
+}
+
+/* Levá část */
+.site-footer__brand {
+  font-size: 14px;
+}
+
+.site-footer__logo-text {
+  font-size: 20px;           /* mobilní font */
+  font-weight: 700;
+  color: $footer-accent;
+  margin-bottom: 8px;
+}
+
+.site-footer__tagline {
+  color: $footer-muted;
+}
+
+/* Sloupce */
+.site-footer__column {
+  h3 {
+    font-size: 15px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: $footer-text;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li + li {
+    margin-top: 4px;
+  }
+
+  a {
+    color: $footer-muted;
+    text-decoration: none;
+
+    &:hover {
+      color: $footer-text;
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Social */
+.site-footer__column--social {
+  text-align: left;
+}
+
+.site-footer__social-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background-color: #e6fbff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: $footer-text;
+  font-size: 18px;
+  transition: transform 0.1s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
+    background-color: #d8f6ff;
+  }
+}
+
+/* Spodní řádek */
+.site-footer__bottom {
+  margin: 0 auto;
+  text-align: center;
+  padding: 12px 20px 0;
+  border-top: 1px solid $footer-border;
+  color: $footer-muted;
+  font-size: 13px;
+}

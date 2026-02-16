@@ -1,0 +1,16 @@
+services:
+	- App\Infrastructure\Router\RouterFactory::createRouter
+	- App\Infrastructure\Model\LogErrorModel
+	- App\Infrastructure\Security\ProfilesAuthenticator
+	- App\Domain\Trips\TripImageStorage(wwwDir: %wwwDir%)
+	- App\Domain\Reservations\ReservationFacade
+	- App\Domain\Transfer\TransferFacade
+
+
+search:
+    - in: %appDir%
+      classes:
+          - *Repository
+          - *Service
+          - *Factory
+          - *Facade

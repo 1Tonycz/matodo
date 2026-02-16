@@ -1,0 +1,36 @@
+
+
+parameters:
+    wwwDir: %appDir%/../www
+
+
+application:
+    errorPresenter: Error
+    mapping:
+            Admin: App\Presentation\Admin\UI\*\**Presenter
+            Front: App\Presentation\Front\UI\*\**Presenter
+            Error: App\Presentation\Error\*Presenter
+
+
+database:
+    dsn: 'mysql:host=localhost:3306;dbname=matodo'
+    user: 'root'
+    password: ''
+
+
+mail:
+    smtp: true
+    host: 127.0.0.1
+    port: 25
+    username: ''
+    password: ''
+    secure: null
+
+latte:
+	strictTypes: yes
+	strictParsing: yes
+
+di:
+	export:
+		parameters: no
+		tags: no

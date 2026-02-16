@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Antonín Zelený">
+    <link rel="icon" type="image/x-icon" href="{$basePath}/favicon.ico">
+    <link rel="stylesheet" href="{$basePath}/css/Front/{$css}-scss.css">
+    <script src="https://unpkg.com/naja@2/dist/Naja.min.js"></script>
+    <script src="{$basePath}/js/Front/{if isset($js)}{$js}-js{else}master{/if}.js" defer></script>
+    <title>Web</title>
+</head>
+<body>
+{snippet flash}
+    <div class="flash-container">
+        {foreach $flashes as $flash}
+            <div class="flash flash--{$flash->type}">
+                <span>{$flash->message}</span>
+                <button type="button" class="flash__close" data-close="flash">×</button>
+            </div>
+        {/foreach}
+    </div>
+{/snippet}
+
+{snippet content}
+    {block content}
+    {/block}
+{/snippet}
+</body>
+</html>

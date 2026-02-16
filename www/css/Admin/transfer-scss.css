@@ -1,0 +1,1200 @@
+/*!********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./style/Admin/transfer.scss ***!
+  \********************************************************************************************************************/
+@charset "UTF-8";
+body {
+  background-color: #f5f7fb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: 260px;
+  background-color: #ffffff;
+  border-right: 1px solid #e1e4ea;
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 24px 32px;
+}
+
+.admin-sidebar__header {
+  margin-bottom: 16px;
+}
+.admin-sidebar__header .admin-sidebar__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2933;
+}
+.admin-sidebar__header .admin-sidebar__email {
+  font-size: 13px;
+  color: #9aa5b1;
+  margin-top: 4px;
+}
+
+.admin-sidebar__divider {
+  border: none;
+  border-top: 1px solid #e1e4ea;
+  margin: 10px 0 16px;
+}
+.admin-sidebar__divider--bottom {
+  margin-top: auto;
+  margin-bottom: 16px;
+}
+
+.admin-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-sidebar__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 18px;
+  color: #1f2933;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.admin-sidebar__nav-item .admin-sidebar__nav-icon {
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+}
+.admin-sidebar__nav-item:hover {
+  background-color: #e5fbfc;
+}
+.admin-sidebar__nav-item.is-active {
+  background-color: #03c4c9;
+  color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+.admin-sidebar__nav-item.is-active .admin-sidebar__nav-icon {
+  opacity: 0.95;
+}
+
+.admin-sidebar__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-sidebar__back {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  background-color: #faf9f6;
+  border: 1px solid #f0eee7;
+  text-decoration: none;
+  font-size: 14px;
+  color: #1f2933;
+  transition: box-shadow 0.15s ease, transform 0.1s ease;
+}
+.admin-sidebar__back:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+.admin-sidebar__back .admin-sidebar__back-icon {
+  font-size: 16px;
+}
+
+.admin-sidebar__logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #e02424;
+  text-decoration: none;
+  margin-top: 4px;
+}
+.admin-sidebar__logout:hover {
+  text-decoration: underline;
+}
+.admin-sidebar__logout .admin-sidebar__logout-icon {
+  font-size: 16px;
+}
+
+.flash-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* základní vzhled */
+.flash {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 1rem 1.4rem;
+  border-radius: 12px;
+  color: #ffffff;
+  min-width: 260px;
+  max-width: 350px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.25s ease;
+}
+
+/* typ success */
+.flash--success {
+  background: #28c76f;
+}
+
+/* typ error/danger */
+.flash--danger,
+.flash--error {
+  background: #ea5455;
+}
+
+/* typ info */
+.flash--info {
+  background: #3a86ff;
+}
+
+/* close button */
+.flash__close {
+  cursor: pointer;
+  font-size: 1.2rem;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 0;
+}
+
+/* animace */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+:root {
+  font-size: 16px;
+  font-weight: 400;
+  scroll-behavior: smooth;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body,
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: calc(1.375rem + 1.5vw);
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  font-size: calc(1.325rem + 0.9vw);
+}
+@media screen and (min-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  font-size: calc(1.3rem + 0.6vw);
+}
+@media screen and (min-width: 768px) {
+  h3 {
+    font-size: 1.75rem;
+  }
+}
+
+h4 {
+  font-size: calc(1.275rem + 0.3vw);
+}
+@media screen and (min-width: 768px) {
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+@media screen and (min-width: 768px) {
+  h5 {
+    font-size: 1.25rem;
+  }
+}
+
+h6 {
+  font-size: 1rem;
+}
+@media screen and (min-width: 768px) {
+  h6 {
+    font-size: 1rem;
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+textarea,
+input,
+button {
+  font-family: inherit;
+}
+
+iframe {
+  border: none;
+}
+
+sup,
+sub,
+small {
+  font-size: smaller;
+}
+
+/* ================
+   PAGE WRAP
+================ */
+.transfer-admin {
+  padding: 26px 18px 40px;
+  background: #f6f7f9;
+  min-height: 100vh;
+}
+
+.transfer-admin__header {
+  margin-bottom: 18px;
+}
+
+.transfer-admin__title {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.transfer-admin__subtitle {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* ================
+   STATS
+================ */
+.transfer-stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  margin: 16px 0 18px;
+}
+
+.transfer-stat {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 18px 18px 16px;
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.06);
+}
+
+.transfer-stat__label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #475569;
+  margin-bottom: 10px;
+}
+
+.transfer-stat__value {
+  font-size: 32px;
+  font-weight: 900;
+  color: #0f172a;
+  line-height: 1;
+}
+
+.transfer-stat__value--waiting {
+  color: #d97706; /* oranžová jako na obrázku */
+}
+
+.transfer-stat__value--confirmed {
+  color: #16a34a; /* zelená */
+}
+
+/* ================
+   PANEL
+================ */
+.transfer-panel {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  box-shadow: 0 16px 34px rgba(15, 23, 42, 0.06);
+  overflow: hidden;
+}
+
+.transfer-panel__head {
+  padding: 18px 18px 10px;
+}
+
+.transfer-panel__title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 900;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.transfer-panel__icon {
+  font-size: 18px;
+}
+
+.transfer-panel__body {
+  padding: 8px 18px 18px;
+}
+
+/* ================
+   ITEM CARD
+================ */
+.transfer-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 14px 14px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  background: #ffffff;
+}
+
+.transfer-item + .transfer-item {
+  margin-top: 12px;
+}
+
+.transfer-item__top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.transfer-item__name {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* Badge */
+.transfer-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.transfer-badge--waiting {
+  background: #f59e0b;
+  color: #fff;
+}
+
+.transfer-badge--confirmed {
+  background: #16a34a;
+  color: #fff;
+}
+
+/* Meta row */
+.transfer-item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+  color: #475569;
+  font-size: 14px;
+}
+
+.transfer-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.transfer-meta__icon {
+  opacity: 0.85;
+}
+
+/* Route */
+.transfer-item__route {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #475569;
+  font-size: 14px;
+}
+
+/* ================
+   ACTIONS (3 buttons)
+================ */
+.transfer-item__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+/* Buttons */
+.tbtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.08s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.tbtn:active {
+  transform: translateY(1px);
+}
+
+/* Primary (Potvrdit) */
+.tbtn--primary {
+  background: #12bfe0;
+  color: #fff;
+  box-shadow: 0 10px 22px rgba(18, 191, 224, 0.25);
+}
+.tbtn--primary:hover {
+  filter: brightness(0.97);
+  box-shadow: 0 12px 26px rgba(18, 191, 224, 0.32);
+  transform: translateY(-1px);
+}
+
+/* Ghost (Email) */
+.tbtn--ghost {
+  background: #fff;
+  color: #0f172a;
+  border-color: #e5e7eb;
+}
+.tbtn--ghost:hover {
+  background: #f8fafc;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
+  transform: translateY(-1px);
+}
+
+/* Danger (Smazat) */
+.tbtn--danger {
+  background: #fff;
+  color: #ef4444;
+  border-color: #fee2e2;
+}
+.tbtn--danger:hover {
+  background: #fef2f2;
+  box-shadow: 0 8px 18px rgba(239, 68, 68, 0.12);
+  transform: translateY(-1px);
+}
+
+/* ================
+   DESKTOP OVERRIDES
+================ */
+@media (min-width: 768px) {
+  .transfer-admin {
+    padding: 34px 38px 60px;
+  }
+  .transfer-stats {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  .transfer-panel__head {
+    padding: 22px 22px 10px;
+  }
+  .transfer-panel__body {
+    padding: 10px 22px 22px;
+  }
+  .transfer-item {
+    grid-template-columns: 1fr auto; /* text vlevo, actions vpravo */
+    align-items: center;
+    padding: 16px 16px;
+  }
+  .transfer-item__actions {
+    justify-content: flex-end;
+  }
+}
+@media (min-width: 1100px) {
+  .transfer-admin {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+/* ===========
+   BACKDROP
+=========== */
+.tdm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  padding: 16px;
+}
+
+/* ===========
+   MODAL
+=========== */
+.tdm-modal {
+  width: 760px;
+  max-width: 100%;
+  max-height: 92vh;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+/* ===========
+   HEADER
+=========== */
+.tdm-header {
+  padding: 18px 18px 8px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.tdm-title {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.tdm-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 2px solid rgba(18, 191, 224, 0.55);
+  color: #0f172a;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  text-decoration: none;
+  line-height: 1;
+  background: #fff;
+  transition: transform 0.08s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.tdm-close:hover {
+  background: #f0fbff;
+  box-shadow: 0 10px 22px rgba(18, 191, 224, 0.18);
+  transform: translateY(-1px);
+}
+
+/* ===========
+   BODY
+=========== */
+.tdm-body {
+  padding: 10px 18px 18px;
+}
+
+.tdm-topgrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px 16px;
+}
+
+.tdm-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.tdm-block--right {
+  align-items: flex-start;
+}
+
+.tdm-label {
+  font-size: 13px;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.tdm-strong {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* badge */
+.tdm-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 800;
+  background: #f1f5f9;
+  color: #334155;
+  width: fit-content;
+}
+
+.tdm-badge--waiting {
+  background: #f59e0b;
+  color: #fff;
+}
+
+.tdm-badge--confirmed {
+  background: #16a34a;
+  color: #fff;
+}
+
+/* contact rows */
+.tdm-contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #334155;
+  font-size: 14px;
+}
+
+.tdm-ico {
+  width: 18px;
+  display: inline-flex;
+  justify-content: center;
+  opacity: 0.85;
+}
+
+.tdm-link {
+  color: #0f172a;
+  text-decoration: none;
+}
+.tdm-link:hover {
+  text-decoration: underline;
+}
+
+/* separators */
+.tdm-sep {
+  border: none;
+  height: 1px;
+  background: #e5e7eb;
+  margin: 12px 0;
+}
+
+/* meta */
+.tdm-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  color: #334155;
+  font-size: 14px;
+}
+
+.tdm-meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* route */
+.tdm-section {
+  margin-top: 2px;
+}
+
+.tdm-route {
+  margin-top: 10px;
+  background: #f3f4f6;
+  border-radius: 14px;
+  padding: 14px 14px;
+}
+
+.tdm-route-row {
+  display: grid;
+  grid-template-columns: 26px 1fr;
+  gap: 10px;
+  padding: 2px 0;
+}
+
+.tdm-route-k {
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.tdm-route-v {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* footer */
+.tdm-footer {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.reservations-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  padding: 16px;
+}
+
+.reservations-modal {
+  background: #ffffff;
+  width: 560px;
+  max-width: 100%;
+  max-height: 92vh;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.reservations-modal--email {
+  width: 560px;
+}
+
+.reservations-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 18px 20px 12px;
+  gap: 16px;
+}
+.reservations-modal__header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.reservations-modal__close {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid #bae6fd;
+  color: #0f172a;
+  font-size: 20px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: #ffffff;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+.reservations-modal__close:hover {
+  background: #f0fbff;
+  box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
+  transform: translateY(-1px);
+}
+
+.reservations-modal__info {
+  padding: 12px 20px;
+  background: #f8fafc;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #334155;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.reservations-modal__info strong {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.reservations-modal__body {
+  padding: 16px 20px 20px;
+  overflow-y: auto;
+}
+
+.reservations-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.reservations-form__group label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+.reservations-form__group input[type=text],
+.reservations-form__group textarea {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.reservations-form__group input[type=text]::placeholder,
+.reservations-form__group textarea::placeholder {
+  color: #94a3b8;
+}
+.reservations-form__group input[type=text]:focus,
+.reservations-form__group textarea:focus {
+  background: #ffffff;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+.reservations-form__group textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.reservations-modal__submit {
+  margin-top: 8px;
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  background: linear-gradient(to right, #02c4c7, #08b5ff);
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgba(3, 196, 201, 0.55);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+.reservations-modal__submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(3, 196, 201, 0.7);
+  filter: brightness(0.98);
+}
+.reservations-modal__submit:active {
+  transform: translateY(0);
+}
+
+@media (min-width: 768px) {
+  .reservations-modal--email {
+    width: 600px;
+  }
+  .reservations-modal__header {
+    padding: 20px 24px 12px;
+  }
+  .reservations-modal__info {
+    padding: 14px 24px;
+  }
+  .reservations-modal__body {
+    padding: 18px 24px 24px;
+  }
+}
+body.modal-open {
+  overflow: hidden;
+}
+
+/* =====================================
+   BACKDROP (sdílený s ostatními modaly)
+===================================== */
+.reservations-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  padding: 16px;
+}
+
+/* =====================================
+   MODAL SHELL
+===================================== */
+.reservations-modal {
+  background: #ffffff;
+  width: 560px;
+  max-width: 100%;
+  max-height: 92vh;
+  border-radius: 18px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* confirm variant */
+.reservations-modal--confirm {
+  width: 520px;
+}
+
+/* =====================================
+   HEADER
+===================================== */
+.reservations-modal__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 18px 20px 12px;
+  gap: 16px;
+}
+.reservations-modal__header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+/* close */
+.reservations-modal__close {
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid #bbf7d0; /* zelený hint pro confirm */
+  color: #0f172a;
+  font-size: 20px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  background: #ffffff;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+.reservations-modal__close:hover {
+  background: #f0fdf4;
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.18);
+  transform: translateY(-1px);
+}
+
+/* =====================================
+   INFO BOX
+===================================== */
+.reservations-modal--confirm .reservations-modal__info {
+  padding: 12px 20px;
+  background: #f0fdf4; /* jemná zelená */
+  border-top: 1px solid #dcfce7;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #14532d;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.reservations-modal--confirm .reservations-modal__info strong {
+  color: #0f172a;
+  font-weight: 800;
+}
+
+/* =====================================
+   BODY
+===================================== */
+.reservations-modal__body {
+  padding: 16px 20px 20px;
+  overflow-y: auto;
+}
+
+/* =====================================
+   FORM GROUP
+===================================== */
+.reservations-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+.reservations-form__group label {
+  font-size: 14px;
+  font-weight: 800;
+  color: #0f172a;
+}
+.reservations-form__group input[type=text],
+.reservations-form__group input[type=number],
+.reservations-form__group input[type=email],
+.reservations-form__group input[type=tel],
+.reservations-form__group input[type=date],
+.reservations-form__group textarea,
+.reservations-form__group select {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.reservations-form__group input[type=text]::placeholder,
+.reservations-form__group input[type=number]::placeholder,
+.reservations-form__group input[type=email]::placeholder,
+.reservations-form__group input[type=tel]::placeholder,
+.reservations-form__group input[type=date]::placeholder,
+.reservations-form__group textarea::placeholder,
+.reservations-form__group select::placeholder {
+  color: #94a3b8;
+}
+.reservations-form__group input[type=text]:focus,
+.reservations-form__group input[type=number]:focus,
+.reservations-form__group input[type=email]:focus,
+.reservations-form__group input[type=tel]:focus,
+.reservations-form__group input[type=date]:focus,
+.reservations-form__group textarea:focus,
+.reservations-form__group select:focus {
+  background: #ffffff;
+  border-color: #22c55e; /* zelený focus */
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+}
+
+/* =====================================
+   SUBMIT BUTTON (confirm)
+===================================== */
+.reservations-modal--confirm .reservations-modal__submit {
+  margin-top: 8px;
+  width: 100%;
+  border: none;
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  background: linear-gradient(to right, #22c55e, #16a34a);
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgba(34, 197, 94, 0.35);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+.reservations-modal--confirm .reservations-modal__submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(34, 197, 94, 0.45);
+  filter: brightness(0.98);
+}
+.reservations-modal--confirm .reservations-modal__submit:active {
+  transform: translateY(0);
+}
+
+/* =====================================
+   DESKTOP OVERRIDES
+===================================== */
+@media (min-width: 768px) {
+  .reservations-modal--confirm {
+    width: 560px;
+  }
+  .reservations-modal__header {
+    padding: 20px 24px 12px;
+  }
+  .reservations-modal--confirm .reservations-modal__info {
+    padding: 14px 24px;
+  }
+  .reservations-modal__body {
+    padding: 18px 24px 24px;
+  }
+}
+/* =====================================
+   LOCK SCROLL
+===================================== */
+body.modal-open {
+  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .tdm-header {
+    padding: 20px 22px 8px;
+  }
+  .tdm-body {
+    padding: 10px 22px 22px;
+  }
+  .tdm-title {
+    font-size: 22px;
+  }
+  .tdm-topgrid {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+  .tdm-block--right {
+    align-items: flex-start;
+    justify-self: start;
+  }
+  /* lock scroll helper */
+  body.modal-open {
+    overflow: hidden;
+  }
+}
+
+/*# sourceMappingURL=transfer-scss.css.map*/

@@ -1,0 +1,392 @@
+{var $css = 'home'}
+{var $js = 'home'}
+{var $pageTitle = 'Výlety Dominikánská republika'}
+{var $pageDescription = 'Výlety v Dominikánské republice s profesionálními průvodci. Bezpečné zážitky a jednoduchá rezervace online.'}
+{block content}
+    <header class="hero">
+        <video class="hero__video" autoplay muted loop playsinline poster>
+            <source src="/video/caribben.mp4" type="video/mp4">
+            Váš prohlížeč nepodporuje HTML5 video. Video karibské pláže.
+        </video>
+
+        <div class="hero__content">
+            <h1>Objevte Dominikánskou Republiku</h1>
+            <p>
+                Zažijte nezapomenutelná dobrodružství v karibském ráji.<br>
+                Profesionální průvodci, bezpečné výlety, úžasné zážitky.
+            </p>
+
+            <div class="hero__buttons">
+                <a class="hero__button" id="primary" href="#vylety">Zobrazit výlety</a>
+                <a class="hero__button" id="secondary" href="#kontakt">Kontaktujte nás</a>
+            </div>
+        </div>
+        <div class="hero__wave">
+            <svg viewBox="0 0 1440 150" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#f6f4f2" d="M0,96L80,90.7C160,85,320,75,480,80C640,85,800,107,960,112C1120,117,1280,107,1360,101.3L1440,96L1440,160L1360,160C1280,160,1120,160,960,160C800,160,640,160,480,160C320,160,160,160,80,160L0,160Z"/>
+            </svg>
+        </div>
+    </header>
+    <section class="trips">
+        <div class="trips__container">
+            <header class="trips__header" id="vylety">
+                <h2 class="trips__title">Naše výlety</h2>
+                <p class="trips__subtitle">
+                    Vyberte si z naší široké nabídky zážitků a vytvořte si nezapomenutelné vzpomínky
+                </p>
+            </header>
+
+
+            <div class="trips__grid">
+            {foreach $trips as $trip}
+                <article class="card">
+                    <div class="card__image">
+                        <img
+                                src="{$basePath}/img/{$trip->img_folder}/{$trip->img_name}"
+                                alt="{$trip->title}"
+                                loading="lazy"
+                                decoding="async"
+                        >
+                    </div>
+
+                    <div class="card__content">
+                        <h3 class="card__title">{$trip->title}</h3>
+                        <p class="card__text">
+                            {$trip->description}
+                        </p>
+                    </div>
+                    <div class="card__meta">
+                        <div class="card__meta-item">
+                            <span class="card__meta-icon">🕒</span>
+                            <span>{$trip->duration}</span>
+                        </div>
+                        <div class="card__meta-item">
+                            <span class="card__meta-icon">👥</span>
+                            <span>Až {$trip->group_size} lidí</span>
+                        </div>
+                        <div class="card__meta-item">
+                            <span class="card__meta-icon">📍</span>
+                            <span>{$trip->location}</span>
+                        </div>
+                    </div>
+                    <footer class="card__footer">
+                        <a n:href="Excursion:default $trip->id" class="card__btn">Zjistit více</a>
+                    </footer>
+                </article>
+            {/foreach}
+            </div>
+        </div>
+    </section>
+
+    <section class="luxury-transfer">
+        <div class="container">
+
+            <header class="luxury-transfer__header" id="transfer">
+                <h2 class="luxury-transfer__title">Luxusní Transfer</h2>
+                <p class="luxury-transfer__subtitle">
+                    Cestujte pohodlně a stylově s naším prémiovým transferem Chevrolet Suburban
+                </p>
+            </header>
+
+            <div class="luxury-transfer__content">
+
+                <div class="luxury-transfer__image">
+                    <img src="{$basePath}/img/suburban.avif" alt="Chevrolet Suburban">
+                    <div class="luxury-transfer__image-label">
+                        <strong>Chevrolet Suburban</strong>
+                        <span class="luxury-transfer__title">Luxusní Transfer</span>
+                    </div>
+                </div>
+
+                <div class="luxury-transfer__info">
+
+                    <div class="features">
+
+                        <div class="feature">
+                            <div class="feature__icon icon-car">{include car}</div>
+                            <h3 class="feature__title">Chevrolet Suburban</h3>
+                            <p class="feature__text">Luxusní SUV pro maximální komfort</p>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature__icon icon-people">{include people}</div>
+                            <h3 class="feature__title">Až 6 pasažérů</h3>
+                            <p class="feature__text">Prostorný interiér pro celou rodinu</p>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature__icon icon-shield">{include shield}</div>
+                            <h3 class="feature__title">Bezpečnost</h3>
+                            <p class="feature__text">Velké SUV zařidí maximální bezpečnost</p>
+                        </div>
+
+                        <div class="feature">
+                            <div class="feature__icon icon-vip">{include star}</div>
+                            <h3 class="feature__title">VIP servis</h3>
+                            <p class="feature__text">Klimatizace, WiFi</p>
+                        </div>
+
+                    </div>
+
+                    <ul class="transfer-meta">
+                        <li>Letiště · Hotely · Výlety · Soukromé jízdy</li>
+                        <li>Dostupné 24/7 po celé zemi</li>
+                    </ul>
+
+                    <a n:href="transfer!" class="btn btn--primary">
+                        Objednat Transfer
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <section class="seo-text luxury-transfer__header luxury-transfer" style="margin-bottom: 0">
+        <div class="container">
+            <div class="trips__container">
+                <h2>O nás</h2>
+                <p>
+                    Jsme dva mladý kluci, co nabízí výlety v Dominikánské republice se zaměřením, pohodlí a autentické zážitky.
+                    Vyberte si dobrodružství na moři, poznávání přírody i výlety. Rezervace je rychlá
+                     a rádi poradíme s výběrem výletu i transferem.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="kontakt">
+        <div class="contact__container">
+
+            <!-- Hlavička sekce -->
+            <header class="contact__header">
+                <h2 class="contact__title">Kontaktujte nás</h2>
+                <p class="contact__subtitle">
+                    Máte dotaz nebo chcete rezervovat výlet? Napište nám!
+                </p>
+            </header>
+
+            <!-- Dvousloupcový layout -->
+            <div class="contact__grid">
+
+                <!-- LEVÁ STRANA – FORMULÁŘ -->
+                <div class="contact__form">
+                    <form n:name="contactForm" class="contact-form">
+
+                        <!-- Jméno -->
+                        <div class="form-group">
+                            <label for="frm-contactForm-name">Jméno</label>
+                            <input n:name="Name" class="input">
+                            <div class="error" n:if="$form['Name']->error">
+                                {$form['Name']->error}
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-group">
+                            <label for="frm-contactForm-email">Email</label>
+                            <input n:name="Email" class="input">
+                            <div class="error" n:if="$form['Email']->error">
+                                {$form['Email']->error}
+                            </div>
+                        </div>
+
+                        <!-- Zpráva -->
+                        <div class="form-group">
+                            <label for="frm-contactForm-message">Zpráva</label>
+                            <textarea n:name="Message" class="textarea"></textarea>
+                            <div class="error" n:if="$form['Message']->error">
+                                {$form['Message']->error}
+                            </div>
+                        </div>
+
+                        <!-- Odeslat -->
+                        <button n:name="Send" class="btn-submit">
+                            Odeslat zprávu
+                        </button>
+
+                    </form>
+                </div>
+
+                <!-- PRAVÁ STRANA – INFO BOXY -->
+                <aside class="contact__aside">
+
+                    <!-- Kontakt karta -->
+                    <div class="contact-card contact-card--info">
+                        <div class="contact-card__row">
+                            <div class="contact-card__icon">
+                                {include email}
+                            </div>
+                            <div>
+                                <div class="contact-card__label">Email</div>
+                                <a href="mailto:info@dominikanskevylety.cz"
+                                   class="contact-card__value">
+                                    info@matodo.cz
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-card__row">
+                            <div class="contact-card__icon">
+                                {include phone}
+                            </div>
+                            <div id="kontakt">
+                                <div class="contact-card__label">Telefon</div>
+                                <a href="tel:+1(829)543-0711" class="contact-card__value">
+                                    +1(829)543-0711
+                                </a><br>
+                                <a href="tel:+1(829)295-7446" class="contact-card__value">
+                                    +1(829)295-7446
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="contact-card__row">
+                            <div class="contact-card__icon">
+                                {include point}
+                            </div>
+                            <div>
+                                <div class="contact-card__label">Adresa</div>
+                                <div class="contact-card__value">
+                                    Bayahibe<br>
+                                    Dominikánská republika
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA karta dole
+                    <div class="contact-card contact-card--cta">
+                        <h3 class="contact-card__title">Připravení na dobrodružství?</h3>
+                        <p class="contact-card__text">
+                            Rezervujte si výlet ještě dnes a získejte 10% slevu na první objednávku!
+                        </p>
+                        <a href="#nabidky" class="contact-card__btn">
+                            Zobrazit speciální nabídky
+                        </a>
+                    </div>
+                    -->
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    {if $showTransferModal}
+        <div class="transfer-modal-backdrop">
+            <div class="transfer-modal" role="dialog" aria-modal="true">
+                <div class="transfer-modal__header">
+                    <h2>Rezervace Transferu</h2>
+                    <a n:href="this" class="transfer-modal__close" aria-label="Zavřít">×</a>
+                </div>
+
+                <div class="transfer-modal__body">
+                    {form transferForm, class => "transfer-form"}
+
+                        <div class="transfer-grid">
+
+                            <div class="transfer-group">
+                                <label for="frm-transferForm-name">Jméno *</label>
+                                {input name}
+                            </div>
+
+                            <div class="transfer-group">
+                                <label for="frm-transferForm-email">Email *</label>
+                                {input email}
+                            </div>
+
+                            <div class="transfer-group">
+                                <label for="frm-transferForm-phone">Telefon</label>
+                                {input phone}
+                            </div>
+
+                            <div class="transfer-group">
+                                <label for="frm-transferForm-passagers">Počet pasažérů *</label>
+                                {input passagers}
+                            </div>
+
+                            <div class="transfer-group transfer-group--full">
+                                <label for="frm-transferForm-pickup">Místo vyzvednutí *</label>
+                                {input pickup}
+                            </div>
+
+                            <div class="transfer-group transfer-group--full">
+                                <label for="frm-transferForm-destination">Cílová destinace *</label>
+                                {input destination}
+                            </div>
+
+                            <div class="transfer-group">
+                                <label for="frm-transferForm-date">Datum *</label>
+                                <div class="transfer-input-icon">
+                                    <span class="transfer-icon transfer-icon--cal" aria-hidden="true"></span>
+                                    {input date}
+                                </div>
+                            </div>
+
+                            <div class="transfer-group">
+                                <label for="frm-transferForm-time">Čas vyzvednutí *</label>
+                                <div class="transfer-input-icon">
+                                    <span class="transfer-icon transfer-icon--clock" aria-hidden="true"></span>
+                                    {input time}
+                                </div>
+                            </div>
+
+                            <div class="transfer-group transfer-group--full">
+                                <label for="frm-transferForm-note">Poznámky</label>
+                                {input note}
+                            </div>
+
+                            <button n:name="send" class="transfer-submit">
+                                Odeslat rezervaci
+                            </button>
+
+                        </div>
+                    {/form}
+                </div>
+            </div>
+        </div>
+    {/if}
+
+
+
+
+{/block}
+{define shield}
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-check" viewBox="0 0 16 16">
+        <path d="M5.338 1.59a61 61 0 0 0-2.837.856.48.48 0 0 0-.328.39c-.554 4.157.726 7.19 2.253 9.188a10.7 10.7 0 0 0 2.287 2.233c.346.244.652.42.893.533q.18.085.293.118a1 1 0 0 0 .101.025 1 1 0 0 0 .1-.025q.114-.034.294-.118c.24-.113.547-.29.893-.533a10.7 10.7 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067c-.53 0-1.552.223-2.662.524zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.8 11.8 0 0 1-2.517 2.453 7 7 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7 7 0 0 1-1.048-.625 11.8 11.8 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 63 63 0 0 1 5.072.56"/>
+        <path d="M10.854 5.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 7.793l2.646-2.647a.5.5 0 0 1 .708 0"/>
+    </svg>
+{/define}
+
+{define email}
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+        <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+    </svg>
+{/define}
+{define phone}
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-telephone" viewBox="0 0 16 16">
+        <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877z"/>
+    </svg>
+{/define}
+{define point}
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+        <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
+        <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+    </svg>
+{/define}
+{define star}
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-star" viewBox="0 0 16 16">
+        <path d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.522-3.356c.33-.314.16-.888-.282-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767-3.686 1.894.694-3.957a.56.56 0 0 0-.163-.505L1.71 6.745l4.052-.576a.53.53 0 0 0 .393-.288L8 2.223l1.847 3.658a.53.53 0 0 0 .393.288l4.052.575-2.906 2.77a.56.56 0 0 0-.163.506l.694 3.957-3.686-1.894a.5.5 0 0 0-.461 0z"/>
+    </svg>
+{/define}
+{define people}
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
+        <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6m-5.784 6A2.24 2.24 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.3 6.3 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1zM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+    </svg>
+{/define}
+{define car}
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-car-front-fill" viewBox="0 0 16 16">
+    <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679q.05.242.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.8.8 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2m10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2M6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2zM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17s3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+</svg>
+{/define}

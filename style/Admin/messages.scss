@@ -1,0 +1,5 @@
+@import "Root/root";
+@import "messages/messages__mobile.scss";
+@include from(tablet){
+  @import "messages/messages__desktop.scss";
+}

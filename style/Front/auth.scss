@@ -1,0 +1,5 @@
+@import "Root/root";
+@import "auth/auth__mobile.scss";
+@include from(tablet){
+  @import "auth/auth__desktop.scss";
+}

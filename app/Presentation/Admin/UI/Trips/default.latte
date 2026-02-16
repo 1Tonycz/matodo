@@ -1,0 +1,196 @@
+{var $css = 'trips'}
+{block content}
+<div class="trips-page">
+
+    <div class="trips-header">
+        <div>
+            <h1>Správa výletů</h1>
+            <p>Přidávání, úprava a mazání výletů</p>
+        </div>
+
+        <a n:href="new!" class="trips-new-btn">
+            <span>＋</span>
+            <span>Nový výlet</span>
+        </a>
+    </div>
+
+    <div class="trips-grid">
+        {foreach $trips as $trip}
+            <div class="trip-card">
+                <div class="trip-card__image-wrapper">
+                    <img src="{$basePath}/img/{$trip->img_folder}/{$trip->img_name}" alt="{{$trip->img_name}" class="trip-card__image">
+
+                    <div class="trip-card__badge">
+                        {$trip->price} $
+                    </div>
+                </div>
+
+                <div class="trip-card__body">
+                    <h2 class="trip-card__title">{$trip->title}</h2>
+
+                    <p class="trip-card__description">
+                        {$trip->description}
+                    </p>
+
+                    <div class="trip-card__meta">
+                        <span>⏱ {$trip->duration}</span>
+                        <span>📍 {$trip->location}</span>
+                        <span>👥 {$trip->group_size}</span>
+                    </div>
+
+                    <div class="trip-card__actions">
+                        <a n:href="addSchedule! $trip->id" class="btn-trip btn-trip--primary">
+                            {include addSVG} Přidat termíny
+                        </a>
+                        <a n:href="edit! $trip->id" class="btn-trip btn-trip--primary">
+                            {include editSVG} Upravit
+                        </a>
+
+                        <a n:href="delete! $trip->id" class="btn-trip btn-trip--danger">
+                            {include garbageSVG}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        {/foreach}
+    </div>
+
+</div>
+{if $showTripModal}
+    <div class="modal-backdrop">
+        <div class="modal-window modal-window--trip">
+            <div class="modal-window__header">
+                <h2>Nový výlet</h2>
+                <a n:href="this" class="modal-window__close">×</a>
+            </div>
+
+            {form tripForm}
+                <div class="trip-form">
+
+                    <div class="trip-form__row">
+                        <div class="trip-form__group">
+                            <label>Cena Bayahibe</label>
+                            {input price}
+                        </div>
+                        <div class="trip-form__group">
+                            <label>Náklady</label>
+                            {input cost}
+                        </div>
+                    </div>
+                    <div class="trip-form__row">
+                        <div class="trip-form__group">
+                            <label>Cena Punta Cana</label>
+                            {input price_pc}
+                        </div>
+                        <div class="trip-form__group">
+                            <label>Cena Juan Dolio</label>
+                            {input price_jd}
+                        </div>
+                    </div>
+
+                    <div class="trip-form__group">
+                        <label>Název</label>
+                        {input title}
+                    </div>
+
+                    <div class="trip-form__group">
+                        <label>Krátký popis</label>
+                        {input description}
+                    </div>
+
+                    <div class="trip-form__group">
+                        <label>Plný popis</label>
+                        {input full_description}
+                    </div>
+
+                    <div class="trip-form__row">
+                        <div class="trip-form__group">
+                            <label>Délka trvání</label>
+                            {input duration}
+                        </div>
+                        <div class="trip-form__group">
+                            <label>Velikost skupiny</label>
+                            {input groupSize}
+                        </div>
+                        <div class="trip-form__group">
+                            <label>Lokalita</label>
+                            {input location}
+                        </div>
+                    </div>
+
+                    <div class="trip-form__group">
+                        <label>Obrázek</label>
+                        {input image}
+                    </div>
+
+                    <div class="trip-form__row trip-form__row--textarea">
+                        <div class="trip-form__group">
+                            <label>Zahrnuto (každý řádek = položka)</label>
+                            {input included}
+                        </div>
+                        <div class="trip-form__group">
+                            <label>Nezahrnuto (každý řádek = položka)</label>
+                            {input not_included}
+                        </div>
+                    </div>
+
+                    <button n:name="save" class="trip-modal-submit">
+                        Vytvořit výlet
+                    </button>
+                </div>
+            {/form}
+        </div>
+    </div>
+{/if}
+
+{if $showScheduleModal}
+    <div class="modal-backdrop">
+        <div class="modal-window modal-window--trip">
+            <div class="modal-window__header">
+                <h2>Nový termín</h2>
+                <a n:href="this" class="modal-window__close">×</a>
+            </div>
+
+            {form scheduleForm}
+                <div class="trip-form">
+                    <div class="trip-form__row">
+                        <div class="trip-form__group">
+                            <label>Datum výletu</label>
+                            {input date}
+                        </div>
+                        <div class="trip-form__group">
+                            <label>Max lidí</label>
+                            {input max_guest}
+                        </div>
+                    </div>
+                    <div class="trip-form__group">
+                        <label>Poznámky</label>
+                        {input notes}
+                    </div>
+                    <button n:name="send" class="trip-modal-submit">
+                        Vytvořit termín
+                    </button>
+                </div>
+            {/form}
+        </div>
+    </div>
+{/if}
+
+{define garbageSVG}
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+    </svg>
+{/define}
+{define editSVG}
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">
+        <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5z"/>
+    </svg>
+{/define}
+{define addSVG}
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">
+        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+    </svg>
+{/define}
+
+

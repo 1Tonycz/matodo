@@ -1,0 +1,260 @@
+$white: #FFFFFF;
+$light-blue: #14c3d9;
+$text: #1f242e;
+$text-dim: #686e7e;
+$background1: #f6f4f2;
+$background2: #f6f4f2;
+$footer-bg: #ffffff;
+$footer-text: #1f2933;
+$footer-muted: #9aa5b1;
+$footer-border: #e5e7eb;
+$footer-accent: #03c4c9;
+$trip-bg: #f7f5f0;
+$trip-text: #111827;
+$trip-muted: #6b7280;
+$trip-accent: #03c4c9;
+$trip-border: #e5e7eb;
+$res-bg: #ffffff;
+$res-overlay: rgba(15, 23, 42, 0.65);
+$res-text: #111827;
+$res-muted: #6b7280;
+$res-border: #e5e7eb;
+$res-accent: #03c4c9;
+
+.site-footer {
+        padding: 40px 0 24px;
+        background-color: $footer-bg;
+        border-top: 1px solid $footer-border;
+        font-size: 14px;
+        color: $footer-text;
+}
+
+.site-footer__inner {
+        padding: 2rem 10rem;
+        margin: 0 auto 18px;
+
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr;
+        gap: 40px;
+}
+
+/* Levá část */
+
+.site-footer__brand {
+        font-size: 14px;
+}
+
+.site-footer__logo-text {
+        font-size: 22px;
+        font-weight: 700;
+        color: $footer-accent;
+        margin-bottom: 8px;
+}
+
+.site-footer__tagline {
+        color: $footer-muted;
+}
+
+/* Sloupce */
+
+.site-footer__column {
+        h3 {
+                font-size: 15px;
+                font-weight: 700;
+                margin: 0 0 8px;
+                color: $footer-text;
+        }
+
+        ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+        }
+
+        li + li {
+                margin-top: 4px;
+        }
+
+        a {
+                color: $footer-muted;
+                text-decoration: none;
+
+                &:hover {
+                        color: $footer-text;
+                        text-decoration: underline;
+                }
+        }
+}
+
+/* Social */
+
+.site-footer__column--social {
+        text-align: left;
+}
+
+.site-footer__social-buttons {
+        display: flex;
+        gap: 10px;
+        margin-top: 6px;
+}
+
+.social-btn {
+        width: 38px;
+        height: 38px;
+        border-radius: 12px;
+        background-color: #e6fbff;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        color: $footer-text;
+        font-size: 18px;
+        transition: transform 0.1s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+
+        &:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
+                background-color: #d8f6ff;
+        }
+}
+
+/* Spodní řádek */
+
+.site-footer__bottom {
+        margin: 0 auto;
+        text-align: center;
+        padding: 12px 24px 0;
+        border-top: 1px solid $footer-border;
+        color: $footer-muted;
+        font-size: 13px;
+}
+
+body{
+        padding: 0;
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+}
+
+.flash-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+}
+
+/* základní vzhled */
+.flash {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .8rem;
+
+        padding: 1rem 1.4rem;
+        border-radius: 12px;
+        color: $white;
+        min-width: 260px;
+        max-width: 350px;
+
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        animation: fadeIn .25s ease;
+}
+
+/* typ success */
+.flash--success {
+        background: #28c76f;
+}
+
+/* typ error/danger */
+.flash--danger,
+.flash--error {
+        background: #ea5455;
+}
+
+/* typ info */
+.flash--info {
+        background:  $light-blue;
+}
+
+/* close button */
+.flash__close {
+        cursor: pointer;
+        font-size: 1.2rem;
+        background: transparent;
+        border: none;
+        color: $white;
+        padding: 0;
+}
+
+/* animace */
+@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+//BREAKPOINTS
+$breakpoints: (
+        mobile--small: 480px,
+        mobile: 576px,
+        tablet: 768px,
+        notebook--small: 1024px,
+        notebook: 1200px,
+        notebook--large: 1440px,
+        desktop: 1740px
+);
+
+
+//MAX WIDTHS
+$containers-max-width: (
+        mobile--small: 450px,
+        mobile: 540px,
+        tablet: 720px,
+        notebook--small: 992px,
+        notebook: 1140px,
+        notebook--large: 1360px,
+        desktop: 1660px
+);
+
+//FONT WEIGHTS
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-bold: 700;
+
+
+//FONT SIZES
+$font-size: (
+        small: (
+                h1: calc(1.375rem + 1.5vw),
+                h2: calc(1.325rem + .9vw),
+                h3: calc(1.3rem + .6vw),
+                h4: calc(1.275rem + .3vw),
+                h5: 1.25rem,
+                h6: 1rem
+        ),
+        large: (
+                h1: 2.5rem,
+                h2: 2rem,
+                h3: 1.75rem,
+                h4: 1.5rem,
+                h5: 1.25rem,
+                h6: 1rem
+        )
+);
+
+//GAPS
+$gaps: (
+        xxs: .25,
+        xs: .5,
+        sm: 1,
+        md: 2,
+        lg: 3,
+        xl: 5,
+        xxl: 10,
+        xxxl: 15
+)

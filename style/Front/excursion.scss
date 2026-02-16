@@ -1,0 +1,5 @@
+@import "Root/root";
+@import "excursion/excursion__mobile.scss";
+@include from(tablet){
+  @import "excursion/excursion__desktop.scss";
+}

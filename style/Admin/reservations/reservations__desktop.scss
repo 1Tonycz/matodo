@@ -1,0 +1,155 @@
+// ===============================
+// Rezervace – vzhled
+// ===============================
+
+.reservations-page {
+  margin-top: 10px;
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: $admin-text;
+  }
+
+  .admin-subtitle {
+    font-size: 14px;
+    color: $admin-muted;
+    margin-bottom: 20px;
+  }
+}
+
+.reservations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.reservation-card {
+  background: #fff;
+  border-radius: 24px;
+  border: 1px solid $admin-border;
+  padding: 22px 26px;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.04);
+}
+
+.reservation-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.reservation-card__name {
+  font-size: 20px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.reservation-badge {
+  padding: 2px 8px;
+  border-radius: 12px;
+
+  font-size: 12px;
+  font-weight: 600;
+  &-pending {
+    background: #fef3c7;
+    color: #d97706;
+  }
+    &-canceled {
+    background: #fee2e2;
+    color: #dc2626;
+    }
+  &-confirm {
+    background: #dcfce7;
+    color: #16a34a;
+  }
+}
+
+
+.reservation-card__trip {
+  font-size: 14px;
+  color: $admin-accent;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+/* INFO BLOK */
+
+.reservation-card__info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 26px;
+  margin-top: 18px;
+  font-size: 14px;
+  color: $admin-text;
+}
+
+.reservation-info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reservation-card__created {
+  margin-top: 10px;
+  font-size: 13px;
+  color: $admin-muted;
+}
+
+/* TLAČÍTKA */
+
+.reservation-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-rsv {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
+  }
+
+  &--ok {
+    background: #dcfce7;
+    color: #15803d;
+    border-color: #bbf7d0;
+  }
+
+  &--email {
+    background: #e0f2fe;
+    color: #0369a1;
+    border-color: #bae6fd;
+
+    &:hover {
+      background: #d0e8fa;
+    }
+  }
+
+  &--danger {
+    background: #fee2e2;
+    color: #dc2626;
+    border-color: #fecaca;
+
+    &:hover {
+      background: #fdd6d6;
+    }
+  }
+  &--info{
+    background: #fff;
+    color: #000000;
+    border-color: #000000;
+  }
+}

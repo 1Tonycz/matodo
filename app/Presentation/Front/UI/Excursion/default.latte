@@ -1,0 +1,206 @@
+{var $css = "excursion"}
+{var $js = "excursion"}
+{var $pageTitle = $trip->title . ' Výlety Dominikánská republika'}
+{var $pageDescription = ($trip->description ?: ('Výlety Dominikánská republika: ' . $trip->title)) }
+{var $ogImage = $basePath . '/img/' . $trip->img_folder . '/' . $trip->img_name}
+
+{block content}
+
+    <div class="trip-hero" style="background-image: url('{$basePath}/img/{$trip->img_folder}/{$trip->img_name}')">
+        <div class="trip-hero__overlay">
+            <div class="trip-hero__inner">
+                <a n:href="Home:default" class="trip-hero__back">← Zpět na výlety</a>
+                <h1 class="trip-hero__title">{$trip->title}</h1>
+                <p class="trip-hero__subtitle">{$trip->description}</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="trip-main">
+        <div class="trip-main__inner">
+
+            <div class="trip-main__left">
+                <section class="trip-section">
+                    <h2>O výletu</h2>
+                    <p class="trip-section__text">
+                        {$trip->full_description|breaklines}
+                    </p>
+                </section>
+
+                <section class="trip-section trip-section--columns">
+                    <div class="trip-section__col">
+                        <h2>Co je zahrnuto</h2>
+                        <ul class="trip-list trip-list--included">
+                            {foreach $included as $item}
+                                {if trim($item) !== ''}
+                                    <li>{$item}</li>
+                                {/if}
+                            {/foreach}
+                        </ul>
+                    </div>
+
+                    <div class="trip-section__col">
+
+                    </div>
+                </section>
+            </div>
+
+            <aside class="trip-main__right">
+                <div class="trip-price-card">
+                    <div class="trip-price-card__price">
+                    <span class="trip-price-card__amount">
+                        od {$trip->price|number:0,',',' '} USD
+                    </span>
+                        <span class="trip-price-card__per">na osobu</span>
+                    </div>
+
+                    <div class="trip-price-card__meta">
+                        <div class="trip-meta-item">
+                            <span class="trip-meta-item__icon">⏱</span>
+                            <span>{$trip->duration}</span>
+                        </div>
+                        <div class="trip-meta-item">
+                            <span class="trip-meta-item__icon">👥</span>
+                            <span>Až {$trip->group_size} lidí</span>
+                        </div>
+                        <div class="trip-meta-item">
+                            <span class="trip-meta-item__icon">📍</span>
+                            <span>{$trip->location}</span>
+                        </div>
+                    </div>
+
+                    <a n:href="reservation! $trip->id" class="trip-price-card__button">
+                        Rezervovat výlet
+                    </a>
+
+                    <div class="trip-price-card__note">
+                        Bezplatné zrušení až 24 hodin před začátkem
+                    </div>
+                </div>
+
+                <div class="trip-help-card">
+                    <h3>Potřebujete pomoc? Není volný termín?</h3>
+                    <p>Kontaktujte nás pro více informací nebo pro rezervaci.</p>
+                    <a n:href="Home:default#kontakt" class="trip-help-card__button">
+                        Kontaktovat nás
+                    </a>
+                </div>
+            </aside>
+
+        </div>
+    </section>
+
+    {if $showReservationModal}
+        <div class="reservation-modal-backdrop">
+            <div class="reservation-modal reservation-modal--wide">
+
+                <div class="reservation-modal__header">
+                    <h2>Rezervace: {$trip->title}</h2>
+                    <a n:href="this" class="reservation-modal__close">×</a>
+                </div>
+
+                <div class="reservation-modal__body">
+                    {if empty($allowedDates)}
+                        <p style="margin: 0; text-align: center; color: #6b7280; font-size: 15px; line-height: 1.6;">
+                            Momentálně nejsou k dispozici žádné termíny pro tento výlet.<br>
+                            Kontaktujte nás pro více informací, přes formulář nebo WhatsApp.
+                        </p>
+                    {else}
+
+                        <div class="reservation-modal__layout">
+
+                            <div class="reservation-modal__formcol">
+                                {form reservationForm}
+                                    {input trip_id}
+                                    {input token}
+
+                                    <div class="reservation-form__group">
+                                        <label for="frm-reservationForm-name">Jméno a příjmení *</label>
+                                        {input name}
+                                    </div>
+
+                                    <div class="reservation-form__group">
+                                        <label for="frm-reservationForm-email">Email *</label>
+                                        {input email}
+                                    </div>
+
+                                    <div class="reservation-form__group">
+                                        <label for="frm-reservationForm-phone">Telefon</label>
+                                        {input phone}
+                                    </div>
+
+                                    <div class="reservation-form__group">
+                                        <label for="frm-reservationForm-date">Datum výletu *</label>
+                                        <div class="reservation-form__date-wrapper">
+                                            <span class="reservation-form__date-icon"></span>
+                                            {input date, data-allowed-dates => $allowedDatesJson}
+                                        </div>
+                                    </div>
+
+                                    <div class="reservation-form__group">
+                                        <label for="frm-reservationForm-persons">Počet osob *</label>
+                                        {input persons}
+                                    </div>
+
+                                    <div class="reservation-form__group">
+                                        <label>Místo vyzvednutí *</label>
+                                        <div class="pickup-options">
+                                            {foreach $form[pickup]->items as $key => $label}
+                                                <label class="pickup-option">
+                                                    {input pickup:$key}
+                                                    <span class="pickup-option__text">{$label}</span>
+                                                </label>
+                                            {/foreach}
+                                        </div>
+                                    </div>
+
+                                    <div class="reservation-form__group">
+                                        <label for="frm-reservationForm-note">Poznámka a přesná lokace vyzvednutí</label>
+                                        {input note}
+                                    </div>
+
+                                    <button n:name="send" class="reservation-modal__submit">
+                                        Odeslat rezervaci
+                                    </button>
+                                {/form}
+                            </div>
+
+                            <aside class="reservation-modal__summary">
+                                <div class="res-summary__title">Souhrn ceny</div>
+
+                                <div class="res-summary__line">
+                                    <span>Cena za osobu</span>
+                                    <strong><span data-price="pp">0</span> USD</strong>
+                                </div>
+
+                                <div class="res-summary__line">
+                                    <span>Počet osob</span>
+                                    <strong><span data-price="persons">1</span></strong>
+                                </div>
+
+                                <div class="res-summary__divider"></div>
+
+                                <div class="res-summary__total">
+                                    <span>Celkem</span>
+                                    <strong><span data-price="total">0</span> USD</strong>
+                                </div>
+
+                                <div class="res-summary__note">
+                                    Konečná cena může být upřesněna podle domluvy a dostupnosti.
+                                </div>
+                            </aside>
+
+                        </div>
+
+                        <script>
+                            window.pickupPrices = {$pickupPricesJson|noescape};
+                        </script>
+
+                    {/if}
+                </div>
+
+            </div>
+        </div>
+    {/if}
+
+{/block}

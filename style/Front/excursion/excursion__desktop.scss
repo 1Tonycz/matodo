@@ -1,0 +1,62 @@
+.trip-hero__title { font-size: 44px; }
+.trip-hero__inner {
+  padding: gap(md, rem) gap(xxl, rem);
+}
+
+/* MAIN LAYOUT */
+.trip-main__inner {
+  flex-direction: row;
+  align-items: flex-start;
+  padding: gap(md, rem) gap(xxl, rem);
+  gap: 32px;
+}
+
+.trip-main__left { flex: 1.7; }
+.trip-main__right { flex: 1; }
+
+/* TEXT SECTIONS */
+.trip-section--columns {
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 sloupce */
+}
+
+/* PRICE CARD */
+.trip-price-card {
+  padding: 20px 22px 18px;
+}
+
+.trip-price-card__amount {
+  font-size: 34px;
+}
+
+/* HELP BOX */
+.trip-help-card {
+  padding: 16px 18px;
+}
+
+.trip-help-card__button {
+  padding: 9px 14px;
+}
+
+.reservation-modal {
+  width: 100%;
+  max-width: 980px;   /* aby se vešlo form + 320px summary */
+}
+
+.reservation-modal__layout {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.reservation-modal__formcol {
+  flex: 1;
+  min-width: 0;
+}
+
+.reservation-modal__summary {
+  width: 320px;
+  flex: 0 0 320px;
+  position: sticky;
+  top: 12px;
+}

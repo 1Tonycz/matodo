@@ -1,0 +1,288 @@
+{var $css = 'home'}
+{var $js = 'home'}
+{block content}
+<div class="admin-dashboard">
+
+    <header class="admin-dashboard__header">
+        <h1>Dashboard</h1>
+    </header>
+
+    <section class="admin-dashboard__stats">
+        <div class="admin-card">
+            <div class="admin-card__header">
+                <span class="admin-card__title">Dotazy</span>
+                <span class="admin-card__icon">💬</span>
+            </div>
+            <div class="admin-card__value">{$inquiriesCount}</div>
+            <div class="admin-card__subtext">
+                {$newInquiriesCount} nových
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <div class="admin-card__header">
+                <span class="admin-card__title">Výlety</span>
+                <span class="admin-card__icon admin-card__icon--green">🗺</span>
+            </div>
+            <div class="admin-card__value">{$tripsCount}</div>
+            <div class="admin-card__subtext">
+                v nabídce
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <div class="admin-card__header">
+                <span class="admin-card__title">Rezervace</span>
+                <span class="admin-card__icon admin-card__icon--orange">📅</span>
+            </div>
+            <div class="admin-card__value">{$reservationsCount}</div>
+            <div class="admin-card__subtext">
+                {$pendingReservationsCount} čeká na potvrzení
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <div class="admin-card__header">
+                <span class="admin-card__title">Zobrazení výletů</span>
+                <span class="admin-card__icon admin-card__icon--purple">👁</span>
+            </div>
+            <div class="admin-card__value">{$viewsCount}</div>
+            <div class="admin-card__subtext">
+                celkem
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <div class="admin-card__header">
+                <span class="admin-card__title">Opuštěné rezervace</span>
+                <span class="admin-card__icon admin-card__icon--danger">⚠</span>
+            </div>
+            <div class="admin-card__value">{$abandonedPercent}%</div>
+            <div class="admin-card__subtext">
+                nedokončených
+            </div>
+        </div>
+    </section>
+
+    <section class="admin-dashboard__grid">
+        <div class="admin-panel">
+            <div class="admin-panel__header">
+                <span class="admin-panel__title">
+                    <span class="admin-panel__title-icon">📊</span>
+                    Rezervace podle měsiců
+                </span>
+            </div>
+
+            <div class="admin-panel__body admin-panel__body--chart">
+                <canvas id="reservationsChart"
+                        data-labels="{=json_encode(array_keys($reservationsByMonth))}"
+                        data-values="{=json_encode(array_values($reservationsByMonth))}">
+                </canvas>
+            </div>
+        </div>
+
+        <div class="admin-panel">
+            <div class="admin-panel__header">
+                <span class="admin-panel__title">
+                    <span class="admin-panel__title-icon">📈</span>
+                    Konverze: Zobrazení vs Rezervace
+                </span>
+            </div>
+
+            <div class="admin-panel__body admin-panel__body--conversion">
+                <div class="admin-conversion">
+                    <div class="admin-conversion__item">
+                        <div class="admin-conversion__icon admin-conversion__icon--blue">👁</div>
+                        <div class="admin-conversion__value">{$conversionViews}</div>
+                        <div class="admin-conversion__label">Zobrazení</div>
+                    </div>
+
+                    <div class="admin-conversion__item">
+                        <div class="admin-conversion__icon admin-conversion__icon--green">🛒</div>
+                        <div class="admin-conversion__value">{$conversionReservations}</div>
+                        <div class="admin-conversion__label">Rezervace</div>
+                    </div>
+                </div>
+
+                <div class="admin-conversion__divider"></div>
+
+                <div class="admin-conversion__footer">
+                    Konverzní poměr: <strong>{$conversionRate}%</strong>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="admin-dashboard__grid-secondary">
+
+        {* Top 3 nejprodávanější výlety *}
+    <div class="admin-panel admin-panel--toplist admin-panel--toplist-green">
+                <div class="admin-panel__header">
+            <span class="admin-panel__title">
+                <span class="admin-panel__title-icon">📈</span>
+                Top 3 nejprodávanější výlety
+            </span>
+                </div>
+
+                <div class="admin-panel__body">
+                    <div class="admin-toplist">
+                        {if $topBestTrips}
+                            {foreach $topBestTrips as $i => $trip}
+                                <div class="admin-toplist__item">
+                                    <div class="admin-toplist__rank">
+                                        #{$i+1}
+                                    </div>
+                                    <div class="admin-toplist__content">
+                                        <div class="admin-toplist__name">
+                                            {$trip->name}
+                                        </div>
+                                        <div class="admin-toplist__meta">
+                                            {$trip->reservations} rezervací
+                                        </div>
+                                    </div>
+                                </div>
+                            {/foreach}
+                        {else}
+                            <p class="admin-toplist__empty">Zatím žádné rezervace.</p>
+                        {/if}
+                    </div>
+                </div>
+    </div>
+
+    {* Top 3 nejméně prodávané výlety *}
+    <div class="admin-panel admin-panel--toplist admin-panel--toplist-orange">
+                <div class="admin-panel__header">
+            <span class="admin-panel__title">
+                <span class="admin-panel__title-icon">⚠</span>
+                Top 3 nejméně prodávané výlety
+            </span>
+                </div>
+
+                <div class="admin-panel__body">
+                    <div class="admin-toplist">
+                        {if $topWorstTrips}
+                            {foreach $topWorstTrips as $i => $trip}
+                                <div class="admin-toplist__item">
+                                    <div class="admin-toplist__rank">
+                                        #{$i+1}
+                                    </div>
+                                    <div class="admin-toplist__content">
+                                        <div class="admin-toplist__name">
+                                            {$trip->name}
+                                        </div>
+                                        <div class="admin-toplist__meta">
+                                            {$trip->reservations} rezervací
+                                        </div>
+                                    </div>
+                                </div>
+                            {/foreach}
+                        {else}
+                            <p class="admin-toplist__empty">Zatím žádná data.</p>
+                        {/if}
+                    </div>
+                </div>
+    </div>
+
+    {* Nejnavštěvovanější výlet *}
+    <div class="admin-panel admin-panel--wide">
+                <div class="admin-panel__header">
+            <span class="admin-panel__title">
+                <span class="admin-panel__title-icon">👁</span>
+                Nejnavštěvovanější výlet
+            </span>
+                </div>
+
+                <div class="admin-panel__body">
+                    {if $mostVisitedTrip}
+                        <div class="admin-mostviewed">
+                            <div class="admin-mostviewed__name">
+                                {$mostVisitedTrip->name}
+                            </div>
+
+                            <div class="admin-mostviewed__highlight">
+                                <div class="admin-mostviewed__views">
+                            <span class="admin-mostviewed__views-number">
+                                {$mostVisitedTrip->views}
+                            </span>
+                                    <span class="admin-mostviewed__views-label">
+                                zobrazení
+                            </span>
+                                </div>
+                                <div class="admin-mostviewed__extra">
+                                    {$mostVisitedTrip->reservations} rezervací
+                                    ({$mostVisitedTrip->conversion}% konverze)
+                                </div>
+                            </div>
+                        </div>
+                    {else}
+                        <p>Zatím žádná zobrazení.</p>
+                    {/if}
+                </div>
+    </div>
+
+    {* Hodnocení výletů *}
+        <div class="admin-panel admin-panel--wide">
+            <div class="admin-panel__header">
+            <span class="admin-panel__title">
+                <span class="admin-panel__title-icon">⭐</span>
+                Hodnocení výletů
+            </span>
+            </div>
+
+            <div class="admin-panel__body">
+                {if $ratingsSummary}
+                    <p>Průměrné hodnocení: <strong>{$ratingsSummary->avgRating|number:1}</strong>/5</p>
+                    <p>Celkem {$ratingsSummary->count} hodnocení.</p>
+                {else}
+                    <p>Zatím žádná hodnocení.</p>
+                {/if}
+            </div>
+        </div>
+
+    </section>
+    <section class="admin-dashboard__profit">
+        <div class="admin-panel admin-panel--table">
+            <div class="admin-panel__header">
+            <span class="admin-panel__title">
+                <span class="admin-panel__title-icon">💲</span>
+                Ziskovost výletů
+            </span>
+            </div>
+
+            <div class="admin-panel__body">
+                <table class="admin-table admin-table--profit">
+                    <thead>
+                    <tr>
+                        <th>Výlet</th>
+                        <th class="admin-table__th--right">Rezervace</th>
+                        <th class="admin-table__th--right">Tržby</th>
+                        <th class="admin-table__th--right">Náklady</th>
+                        <th class="admin-table__th--right">Zisk</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach $tripsProfit as $trip}
+                        <tr>
+                            <td>{$trip->name}</td>
+                            <td class="admin-table__td--right">
+                                {$trip->reservations}
+                            </td>
+                            <td class="admin-table__td--right">
+                                {$trip->revenue|number:0}&nbsp;$
+                            </td>
+                            <td class="admin-table__td--right">
+                                {$trip->costs|number:0}&nbsp;$
+                            </td>
+                            <td class="admin-table__td--right admin-table__profit
+           {if $trip->profit < 0} is-negative {else} is-positive {/if}">
+                                {$trip->profit|number:0}&nbsp;$
+                            </td>
+                        </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+</div>
+{/block}

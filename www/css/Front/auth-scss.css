@@ -1,0 +1,563 @@
+/*!****************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./style/Front/auth.scss ***!
+  \****************************************************************************************************************/
+@charset "UTF-8";
+.site-footer {
+  padding: 40px 0 24px;
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #1f2933;
+}
+
+.site-footer__inner {
+  padding: 2rem 10rem;
+  margin: 0 auto 18px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+
+/* Levá část */
+.site-footer__brand {
+  font-size: 14px;
+}
+
+.site-footer__logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: #03c4c9;
+  margin-bottom: 8px;
+}
+
+.site-footer__tagline {
+  color: #9aa5b1;
+}
+
+/* Sloupce */
+.site-footer__column h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #1f2933;
+}
+.site-footer__column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-footer__column li + li {
+  margin-top: 4px;
+}
+.site-footer__column a {
+  color: #9aa5b1;
+  text-decoration: none;
+}
+.site-footer__column a:hover {
+  color: #1f2933;
+  text-decoration: underline;
+}
+
+/* Social */
+.site-footer__column--social {
+  text-align: left;
+}
+
+.site-footer__social-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.social-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background-color: #e6fbff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #1f2933;
+  font-size: 18px;
+  transition: transform 0.1s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.social-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
+  background-color: #d8f6ff;
+}
+
+/* Spodní řádek */
+.site-footer__bottom {
+  margin: 0 auto;
+  text-align: center;
+  padding: 12px 24px 0;
+  border-top: 1px solid #e5e7eb;
+  color: #9aa5b1;
+  font-size: 13px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.flash-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* základní vzhled */
+.flash {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 1rem 1.4rem;
+  border-radius: 12px;
+  color: #FFFFFF;
+  min-width: 260px;
+  max-width: 350px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.25s ease;
+}
+
+/* typ success */
+.flash--success {
+  background: #28c76f;
+}
+
+/* typ error/danger */
+.flash--danger,
+.flash--error {
+  background: #ea5455;
+}
+
+/* typ info */
+.flash--info {
+  background: #14c3d9;
+}
+
+/* close button */
+.flash__close {
+  cursor: pointer;
+  font-size: 1.2rem;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  padding: 0;
+}
+
+/* animace */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+:root {
+  font-size: 16px;
+  font-weight: 400;
+  scroll-behavior: smooth;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body,
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: calc(1.375rem + 1.5vw);
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  font-size: calc(1.325rem + 0.9vw);
+}
+@media screen and (min-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  font-size: calc(1.3rem + 0.6vw);
+}
+@media screen and (min-width: 768px) {
+  h3 {
+    font-size: 1.75rem;
+  }
+}
+
+h4 {
+  font-size: calc(1.275rem + 0.3vw);
+}
+@media screen and (min-width: 768px) {
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+@media screen and (min-width: 768px) {
+  h5 {
+    font-size: 1.25rem;
+  }
+}
+
+h6 {
+  font-size: 1rem;
+}
+@media screen and (min-width: 768px) {
+  h6 {
+    font-size: 1rem;
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+textarea,
+input,
+button {
+  font-family: inherit;
+}
+
+iframe {
+  border: none;
+}
+
+sup,
+sub,
+small {
+  font-size: smaller;
+}
+
+/* =========================
+   SITE FOOTER – MOBILE FIRST
+   ========================= */
+.site-footer {
+  padding: 24px 0 16px; /* mobilní paddingy */
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #1f2933;
+}
+
+.site-footer__inner {
+  padding: 2rem 1rem; /* mobilní paddingy */
+  margin: 0 auto 18px;
+  display: grid;
+  grid-template-columns: 1fr; /* mobil: 1 sloupec */
+  gap: 24px;
+}
+
+/* Levá část */
+.site-footer__brand {
+  font-size: 14px;
+}
+
+.site-footer__logo-text {
+  font-size: 20px; /* mobilní font */
+  font-weight: 700;
+  color: #03c4c9;
+  margin-bottom: 8px;
+}
+
+.site-footer__tagline {
+  color: #9aa5b1;
+}
+
+/* Sloupce */
+.site-footer__column h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #1f2933;
+}
+.site-footer__column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-footer__column li + li {
+  margin-top: 4px;
+}
+.site-footer__column a {
+  color: #9aa5b1;
+  text-decoration: none;
+}
+.site-footer__column a:hover {
+  color: #1f2933;
+  text-decoration: underline;
+}
+
+/* Social */
+.site-footer__column--social {
+  text-align: left;
+}
+
+.site-footer__social-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background-color: #e6fbff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #1f2933;
+  font-size: 18px;
+  transition: transform 0.1s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.social-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
+  background-color: #d8f6ff;
+}
+
+/* Spodní řádek */
+.site-footer__bottom {
+  margin: 0 auto;
+  text-align: center;
+  padding: 12px 20px 0;
+  border-top: 1px solid #e5e7eb;
+  color: #9aa5b1;
+  font-size: 13px;
+}
+
+@media screen and (min-width: 768px) {
+  .site-footer__inner {
+    padding: 2rem 10rem; /* desktop paddingy */
+    grid-template-columns: 2fr 1fr 1fr; /* desktop: 3 sloupce */
+    gap: 40px;
+  }
+  .site-footer__logo-text {
+    font-size: 22px; /* desktop větší font */
+  }
+  /* Sloupce */
+  .site-footer__column h3 {
+    font-size: 15px;
+  }
+  .site-footer__column ul {
+    margin: 0;
+    padding: 0;
+  }
+  .site-footer__column li + li {
+    margin-top: 4px;
+  }
+  .site-footer__column a {
+    color: #9aa5b1;
+    text-decoration: none;
+  }
+  .site-footer__column a:hover {
+    color: #1f2933;
+    text-decoration: underline;
+  }
+  /* Spodní řádek */
+  .site-footer__bottom {
+    font-size: 14px; /* desktop větší font */
+  }
+  /* SOCIAL BUTTONS */
+  .site-footer__social-buttons {
+    gap: 12px; /* desktop větší mezera mezi ikonkama */
+  }
+  /* Flash */
+  .flash-container {
+    top: 30px;
+    right: 30px;
+  }
+  .flash {
+    min-width: 320px; /* desktop širší flash */
+    max-width: 380px;
+    padding: 1rem 1.8rem;
+  }
+  .flash__close {
+    font-size: 1.4rem;
+  }
+}
+/* ===== PAGE WRAPPER ===== */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6f4f1;
+  padding: 20px;
+}
+
+/* ===== LOGIN CARD ===== */
+.auth-card {
+  width: 420px;
+  max-width: 100%;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 36px 32px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== TITLE ===== */
+.auth-card h1 {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+/* ===== FORM ===== */
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ===== LABELS ===== */
+.auth-card label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* ===== INPUTS ===== */
+.auth-card input[type=text],
+.auth-card input[type=email],
+.auth-card input[type=password] {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  font-size: 15px;
+  background: #fafafa;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.auth-card input[type=text]:focus,
+.auth-card input[type=email]:focus,
+.auth-card input[type=password]:focus {
+  outline: none;
+  border-color: #18c3d3;
+  box-shadow: 0 0 0 3px rgba(24, 195, 211, 0.25);
+  background: #ffffff;
+}
+
+/* ===== ERROR MESSAGE ===== */
+.auth-card .error,
+.auth-card .form-error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.auth-card input[type=submit],
+.auth-card button[type=submit] {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: #18c3d3;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.auth-card input[type=submit]:hover,
+.auth-card button[type=submit]:hover {
+  background: #13afbe;
+}
+.auth-card input[type=submit]:active,
+.auth-card button[type=submit]:active {
+  transform: scale(0.98);
+}
+
+/* ===== FLASH MESSAGES ===== */
+.flash {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+.flash.success {
+  background: #dcfce7;
+  color: #166534;
+}
+.flash.error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 28px 22px;
+  }
+  .auth-card h1 {
+    font-size: 22px;
+  }
+}
+
+/*# sourceMappingURL=auth-scss.css.map*/

@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Zabrání indexaci technických věcí (pokud někdy vzniknou)
+Disallow: /_temp/
+Disallow: /vendor/
+Disallow: /*?*
+Disallow: /system/
+Disallow: /prihlaseni/
+
+Sitemap: https://matodo.cz/sitemap.xml

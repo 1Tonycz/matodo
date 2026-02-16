@@ -1,0 +1,25 @@
+.tdm-header {
+  padding: 20px 22px 8px;
+}
+
+.tdm-body {
+  padding: 10px 22px 22px;
+}
+
+.tdm-title {
+  font-size: 22px;
+}
+
+.tdm-topgrid {
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.tdm-block--right {
+  align-items: flex-start;
+  justify-self: start;
+}
+
+/* lock scroll helper */
+body.modal-open {
+  overflow: hidden;}

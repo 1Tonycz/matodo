@@ -1,0 +1,5 @@
+@import "Root/root";
+@import "trips/trips__mobile.scss";
+@include from(tablet){
+  @import "trips/trips__desktop.scss";
+}

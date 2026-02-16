@@ -1,0 +1,389 @@
+// =========================
+// Dashboard
+// =========================
+
+.admin-dashboard {
+  padding: 8px 0 24px;
+}
+
+.admin-dashboard__header {
+  margin-bottom: 22px;
+
+  h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: $admin-text;
+    margin: 0 0 4px;
+  }
+
+  p {
+    margin: 0;
+    font-size: 14px;
+    color: $admin-muted;
+  }
+}
+
+// horní statistické karty
+.admin-dashboard__stats {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.admin-card {
+  background-color: #ffffff;
+  border-radius: 18px;
+  padding: 16px 18px;
+  border: 1px solid $admin-border;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.admin-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.admin-card__title {
+  font-size: 14px;
+  font-weight: 500;
+  color: $admin-muted;
+}
+
+.admin-card__icon {
+  font-size: 18px;
+  color: $admin-text;
+
+  &--green {
+    color: #16a34a;
+  }
+
+  &--orange {
+    color: #f97316;
+  }
+
+  &--purple {
+    color: #7c3aed;
+  }
+
+  &--danger {
+    color: #e02424;
+  }
+}
+
+.admin-card__value {
+  font-size: 24px;
+  font-weight: 700;
+  color: $admin-text;
+  margin-bottom: 4px;
+}
+
+.admin-card__subtext {
+  font-size: 13px;
+  color: $admin-muted;
+}
+
+// spodní panely (graf + konverze)
+.admin-dashboard__grid {
+  display: grid;
+  grid-template-columns: 2fr 1.4fr;
+  gap: 18px;
+  margin-top: 8px;
+}
+
+.admin-panel {
+  background-color: #ffffff;
+  border-radius: 22px;
+  border: 1px solid $admin-border;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
+  padding: 18px 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-panel__header {
+  margin-bottom: 10px;
+}
+
+.admin-panel__title {
+  font-size: 16px;
+  font-weight: 600;
+  color: $admin-text;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.admin-panel__title-icon {
+  font-size: 16px;
+  color: $admin-muted;
+}
+
+.admin-panel__body {
+  flex: 1;
+
+  &--chart {
+    padding-top: 8px;
+
+    canvas {
+      width: 100%;
+      height: 260px;
+    }
+  }
+
+  &--conversion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 8px;
+  }
+}
+
+// konverzní blok
+.admin-conversion {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 12px;
+
+  &__item {
+    text-align: center;
+  }
+
+  &__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 6px;
+    background-color: #eff6ff;
+
+    &--blue {
+      background-color: #e0f2fe;
+      color: #0284c7;
+    }
+
+    &--green {
+      background-color: #dcfce7;
+      color: #16a34a;
+    }
+  }
+
+  &__value {
+    font-size: 20px;
+    font-weight: 600;
+    color: $admin-text;
+  }
+
+  &__label {
+    font-size: 13px;
+    color: $admin-muted;
+  }
+
+  &__divider {
+    height: 1px;
+    background-color: $admin-border;
+    margin: 8px 0 10px;
+  }
+
+  &__footer {
+    font-size: 14px;
+    color: $admin-text;
+    text-align: center;
+
+    strong {
+      font-weight: 600;
+    }
+  }
+}
+
+.admin-dashboard__grid-secondary {
+  display: grid;
+  grid-template-columns: 1.2fr 1.2fr;
+  grid-template-rows: auto auto;
+  gap: 18px;
+  margin-top: 20px;
+
+  .admin-panel--wide {
+    grid-column: span 1;
+  }
+
+  // spodní řada má 2 panely vedle sebe
+  .admin-panel--wide:nth-of-type(3),
+  .admin-panel--wide:nth-of-type(4) {
+    // jen pro jistotu, kdybys někde měnil pořadí
+  }
+}
+
+.admin-panel--toplist {
+  .admin-panel__title {
+    font-weight: 600;
+  }
+}
+
+.admin-panel--toplist-green {
+  .admin-panel__title {
+    color: $admin-success;
+  }
+}
+
+.admin-panel--toplist-orange {
+  .admin-panel__title {
+    color: $admin-warning;
+  }
+}
+
+// seznam top 3
+.admin-toplist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    align-items: stretch;
+    background-color: $admin-top-bg;
+    border-radius: 16px;
+    padding: 10px 12px;
+  }
+
+  &__rank {
+    font-weight: 700;
+    font-size: 18px;
+    color: $admin-success;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__content {
+    flex: 1;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 600;
+    color: $admin-text;
+    margin-bottom: 2px;
+  }
+
+  &__meta {
+    font-size: 13px;
+    color: $admin-muted;
+  }
+
+  &__empty {
+    font-size: 13px;
+    color: $admin-muted;
+    margin: 4px 0 0;
+  }
+}
+
+// nejnavštěvovanější výlet
+.admin-mostviewed {
+  &__name {
+    font-weight: 600;
+    font-size: 16px;
+    color: $admin-text;
+    margin-bottom: 10px;
+  }
+
+  &__highlight {
+    background-color: $admin-mostviewed-bg;
+    border-radius: 16px;
+    padding: 12px 14px;
+  }
+
+  &__views {
+    margin-bottom: 4px;
+  }
+
+  &__views-number {
+    font-size: 24px;
+    font-weight: 700;
+    color: $admin-accent;
+    margin-right: 4px;
+  }
+
+  &__views-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: $admin-accent;
+  }
+
+  &__extra {
+    font-size: 13px;
+    color: $admin-muted;
+  }
+}
+
+.admin-dashboard__profit {
+  margin-top: 22px;
+}
+
+.admin-panel--table {
+  padding-top: 16px;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+
+  th,
+  td {
+    padding: 10px 12px;   // větší padding = čísla budou vidět
+  }
+
+  thead th {
+    font-weight: 600;
+    color: $admin-text;
+    text-align: left;
+    border-bottom: 1px solid $admin-border;
+    // pokud by ti dělal problém, klidně smaž i next řádek:
+    // white-space: nowrap;
+  }
+
+  tbody tr {
+    border-bottom: 1px solid $admin-border;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+
+  tbody td {
+    color: $admin-text;
+    text-align: left;
+  }
+}
+
+// zarovnání doprava
+.admin-table__th--right {
+  text-align: right;
+}
+
+.admin-table__td--right {
+  text-align: right;
+}
+
+// zisk – barvy
+.admin-table__profit {
+  font-weight: 600;
+
+  &.is-positive {
+    color: $admin-profit-positive;
+  }
+
+  &.is-negative {
+    color: $admin-profit-negative;
+  }
+}

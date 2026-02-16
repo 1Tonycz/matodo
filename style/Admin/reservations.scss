@@ -1,0 +1,5 @@
+@import "Root/root";
+@import "reservations/reservations__mobile.scss";
+@include from(tablet){
+  @import "reservations/reservations__desktop.scss";
+}

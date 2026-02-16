@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Antonín Zelený">
+    <link rel="icon" type="image/x-icon" href="{$basePath}/favicon.ico">
+    <link rel="stylesheet" href="{$basePath}/css/Admin/{$css}-scss.css">
+    <script src="https://unpkg.com/naja@2/dist/Naja.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/locale/cs.js"></script>
+    <script>
+        dayjs.locale('cs');
+    </script>
+    <script src="{$basePath}/js/Admin/{if isset($js)}{$js}-js{else}master{/if}.js" defer></script>
+    <script src="{$basePath}/js/Admin/flash-js.js" defer></script>
+    <title>Web</title>
+</head>
+<body>
+{snippet flash}
+    <div class="flash-container">
+        {foreach $flashes as $flash}
+            <div class="flash flash--{$flash->type}">
+                <span>{$flash->message}</span>
+                <button type="button" class="flash__close" data-close="flash">×</button>
+            </div>
+        {/foreach}
+    </div>
+{/snippet}
+
+{snippet content}
+    <div class="admin-layout">
+
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar__header">
+                <div class="admin-sidebar__title">Admin Panel</div>
+            </div>
+
+            <hr class="admin-sidebar__divider">
+
+            <nav class="admin-sidebar__nav">
+                <a n:href=":Admin:Home:default"
+                        class="admin-sidebar__nav-item {if isLinkCurrent(':Admin:Home:*')}is-active{/if}">
+                    <span class="admin-sidebar__nav-icon">▦</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a n:href=":Admin:Calendar:default"
+                        class="admin-sidebar__nav-item {if isLinkCurrent(':Admin:Calendar:*')}is-active{/if}">
+                    <span class="admin-sidebar__nav-icon">🗓</span>
+                    <span>Kalendář</span>
+                </a>
+
+                <a n:href=":Admin:Inquiry:default"
+                        class="admin-sidebar__nav-item {if isLinkCurrent(':Admin:Inquiry:*')}is-active{/if}">
+                    <span class="admin-sidebar__nav-icon">💬</span>
+                    <span>Dotazy</span>
+                </a>
+
+                <a n:href=":Admin:Trips:default"
+                        class="admin-sidebar__nav-item {if isLinkCurrent(':Admin:Trips:*')}is-active{/if}">
+                    <span class="admin-sidebar__nav-icon">🗺</span>
+                    <span>Výlety</span>
+                </a>
+
+                <a n:href=":Admin:Transfer:default"
+                        class="admin-sidebar__nav-item {if isLinkCurrent(':Admin:Transfer:*')}is-active{/if}">
+                    <span class="admin-sidebar__nav-icon">🚗</span>
+                    <span>Transfer</span>
+                </a>
+
+                <a n:href=":Admin:Reservations:default"
+                        class="admin-sidebar__nav-item {if isLinkCurrent(':Admin:Reservations:*')}is-active{/if}">
+                    <span class="admin-sidebar__nav-icon">📅</span>
+                    <span>Rezervace</span>
+                </a>
+            </nav>
+
+            <hr class="admin-sidebar__divider admin-sidebar__divider--bottom">
+
+            <div class="admin-sidebar__bottom">
+                <a href="{$baseUrl}" class="admin-sidebar__back">
+                    <span class="admin-sidebar__back-icon">🏠</span>
+                    <span>Zpět na web</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="admin-content">
+            {block content}
+            {/block}
+        </main>
+    </div>
+{/snippet}
+</body>
+</html>

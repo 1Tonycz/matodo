@@ -1,0 +1,1039 @@
+/*!*********************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./style/Front/excursion.scss ***!
+  \*********************************************************************************************************************/
+@charset "UTF-8";
+.site-footer {
+  padding: 40px 0 24px;
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #1f2933;
+}
+
+.site-footer__inner {
+  padding: 2rem 10rem;
+  margin: 0 auto 18px;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+
+/* Levá část */
+.site-footer__brand {
+  font-size: 14px;
+}
+
+.site-footer__logo-text {
+  font-size: 22px;
+  font-weight: 700;
+  color: #03c4c9;
+  margin-bottom: 8px;
+}
+
+.site-footer__tagline {
+  color: #9aa5b1;
+}
+
+/* Sloupce */
+.site-footer__column h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #1f2933;
+}
+.site-footer__column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-footer__column li + li {
+  margin-top: 4px;
+}
+.site-footer__column a {
+  color: #9aa5b1;
+  text-decoration: none;
+}
+.site-footer__column a:hover {
+  color: #1f2933;
+  text-decoration: underline;
+}
+
+/* Social */
+.site-footer__column--social {
+  text-align: left;
+}
+
+.site-footer__social-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.social-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background-color: #e6fbff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #1f2933;
+  font-size: 18px;
+  transition: transform 0.1s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.social-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
+  background-color: #d8f6ff;
+}
+
+/* Spodní řádek */
+.site-footer__bottom {
+  margin: 0 auto;
+  text-align: center;
+  padding: 12px 24px 0;
+  border-top: 1px solid #e5e7eb;
+  color: #9aa5b1;
+  font-size: 13px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.flash-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* základní vzhled */
+.flash {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 1rem 1.4rem;
+  border-radius: 12px;
+  color: #FFFFFF;
+  min-width: 260px;
+  max-width: 350px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.25s ease;
+}
+
+/* typ success */
+.flash--success {
+  background: #28c76f;
+}
+
+/* typ error/danger */
+.flash--danger,
+.flash--error {
+  background: #ea5455;
+}
+
+/* typ info */
+.flash--info {
+  background: #14c3d9;
+}
+
+/* close button */
+.flash__close {
+  cursor: pointer;
+  font-size: 1.2rem;
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  padding: 0;
+}
+
+/* animace */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+:root {
+  font-size: 16px;
+  font-weight: 400;
+  scroll-behavior: smooth;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body,
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: calc(1.375rem + 1.5vw);
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  font-size: calc(1.325rem + 0.9vw);
+}
+@media screen and (min-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  font-size: calc(1.3rem + 0.6vw);
+}
+@media screen and (min-width: 768px) {
+  h3 {
+    font-size: 1.75rem;
+  }
+}
+
+h4 {
+  font-size: calc(1.275rem + 0.3vw);
+}
+@media screen and (min-width: 768px) {
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+@media screen and (min-width: 768px) {
+  h5 {
+    font-size: 1.25rem;
+  }
+}
+
+h6 {
+  font-size: 1rem;
+}
+@media screen and (min-width: 768px) {
+  h6 {
+    font-size: 1rem;
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+textarea,
+input,
+button {
+  font-family: inherit;
+}
+
+iframe {
+  border: none;
+}
+
+sup,
+sub,
+small {
+  font-size: smaller;
+}
+
+/* =========================
+   SITE FOOTER – MOBILE FIRST
+   ========================= */
+.site-footer {
+  padding: 24px 0 16px; /* mobilní paddingy */
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #1f2933;
+}
+
+.site-footer__inner {
+  padding: 2rem 1rem; /* mobilní paddingy */
+  margin: 0 auto 18px;
+  display: grid;
+  grid-template-columns: 1fr; /* mobil: 1 sloupec */
+  gap: 24px;
+}
+
+/* Levá část */
+.site-footer__brand {
+  font-size: 14px;
+}
+
+.site-footer__logo-text {
+  font-size: 20px; /* mobilní font */
+  font-weight: 700;
+  color: #03c4c9;
+  margin-bottom: 8px;
+}
+
+.site-footer__tagline {
+  color: #9aa5b1;
+}
+
+/* Sloupce */
+.site-footer__column h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: #1f2933;
+}
+.site-footer__column ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.site-footer__column li + li {
+  margin-top: 4px;
+}
+.site-footer__column a {
+  color: #9aa5b1;
+  text-decoration: none;
+}
+.site-footer__column a:hover {
+  color: #1f2933;
+  text-decoration: underline;
+}
+
+/* Social */
+.site-footer__column--social {
+  text-align: left;
+}
+
+.site-footer__social-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.social-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background-color: #e6fbff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #1f2933;
+  font-size: 18px;
+  transition: transform 0.1s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+.social-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.15);
+  background-color: #d8f6ff;
+}
+
+/* Spodní řádek */
+.site-footer__bottom {
+  margin: 0 auto;
+  text-align: center;
+  padding: 12px 20px 0;
+  border-top: 1px solid #e5e7eb;
+  color: #9aa5b1;
+  font-size: 13px;
+}
+
+@media screen and (min-width: 768px) {
+  .site-footer__inner {
+    padding: 2rem 10rem; /* desktop paddingy */
+    grid-template-columns: 2fr 1fr 1fr; /* desktop: 3 sloupce */
+    gap: 40px;
+  }
+  .site-footer__logo-text {
+    font-size: 22px; /* desktop větší font */
+  }
+  /* Sloupce */
+  .site-footer__column h3 {
+    font-size: 15px;
+  }
+  .site-footer__column ul {
+    margin: 0;
+    padding: 0;
+  }
+  .site-footer__column li + li {
+    margin-top: 4px;
+  }
+  .site-footer__column a {
+    color: #9aa5b1;
+    text-decoration: none;
+  }
+  .site-footer__column a:hover {
+    color: #1f2933;
+    text-decoration: underline;
+  }
+  /* Spodní řádek */
+  .site-footer__bottom {
+    font-size: 14px; /* desktop větší font */
+  }
+  /* SOCIAL BUTTONS */
+  .site-footer__social-buttons {
+    gap: 12px; /* desktop větší mezera mezi ikonkama */
+  }
+  /* Flash */
+  .flash-container {
+    top: 30px;
+    right: 30px;
+  }
+  .flash {
+    min-width: 320px; /* desktop širší flash */
+    max-width: 380px;
+    padding: 1rem 1.8rem;
+  }
+  .flash__close {
+    font-size: 1.4rem;
+  }
+}
+/* =========================
+   TRIP HERO – MOBILE FIRST
+   ========================= */
+.trip-hero {
+  position: relative;
+  width: 100%;
+  height: 360px; /* mobil: nižší výška */
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  align-items: flex-end;
+  color: #ffffff;
+}
+
+.trip-hero__overlay {
+  width: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.05));
+  padding: 28px 0 32px;
+}
+
+.trip-hero__inner {
+  padding: 2rem 2rem;
+}
+
+.trip-hero__back {
+  display: inline-block;
+  margin-bottom: 18px;
+  font-size: 14px;
+  color: #f9fafb;
+  text-decoration: none;
+}
+.trip-hero__back:hover {
+  text-decoration: underline;
+}
+
+.trip-hero__title {
+  font-size: 34px;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
+
+.trip-hero__subtitle {
+  margin: 0;
+  max-width: 720px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+/* =========================
+   MAIN LAYOUT – MOBILE FIRST
+   ========================= */
+.trip-main {
+  background-color: #f7f5f0;
+  padding: 32px 0 48px;
+}
+
+.trip-main__inner {
+  padding: 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.trip-main__left {
+  flex: 1.7;
+}
+
+.trip-main__right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* =========================
+   TEXT SECTIONS – MOBILE FIRST
+   ========================= */
+.trip-section {
+  margin-bottom: 24px;
+}
+.trip-section h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 12px;
+}
+
+.trip-section__text {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #111827;
+}
+
+.trip-section--columns {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 sloupec na mobilu */
+  gap: 32px;
+}
+
+.trip-section__col h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   LISTS – MOBILE FIRST
+   ========================= */
+.trip-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+.trip-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  color: #111827;
+}
+.trip-list li::before {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+}
+.trip-list--included li::before {
+  content: "✓";
+  color: #10b981;
+}
+.trip-list--excluded li::before {
+  content: "×";
+  color: #ef4444;
+}
+
+/* =========================
+   PRICE CARD – MOBILE FIRST
+   ========================= */
+.trip-price-card {
+  background-color: #ffffff;
+  border-radius: 24px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.06);
+  padding: 20px 22px 18px;
+}
+
+.trip-price-card__price {
+  margin-bottom: 16px;
+}
+
+.trip-price-card__amount {
+  font-size: 34px;
+  font-weight: 800;
+  color: #111827;
+  display: block;
+}
+
+.trip-price-card__per {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.trip-price-card__meta {
+  margin: 14px 0 18px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.trip-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #111827;
+}
+
+.trip-meta-item__icon {
+  font-size: 16px;
+}
+
+.trip-price-card__button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-top: 4px;
+  padding: 11px 16px;
+  border-radius: 999px;
+  background: linear-gradient(to right, #02c4c7, #08b5ff);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(3, 196, 201, 0.55);
+  transition: transform 0.1s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+.trip-price-card__button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 32px rgba(3, 196, 201, 0.7);
+}
+
+.trip-price-card__note {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* =========================
+   HELP BOX – MOBILE FIRST
+   ========================= */
+.trip-help-card {
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  padding: 16px 18px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+}
+.trip-help-card h3 {
+  margin: 0 0 6px;
+  font-size: 17px;
+  font-weight: 700;
+  color: #111827;
+}
+.trip-help-card p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.trip-help-card__button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+  color: #111827;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+.trip-help-card__button:hover {
+  background-color: #f3f4f6;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.12);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   RESERVATION MODAL – MOBILE FIRST (REFRESH)
+   ========================= */
+/* Backdrop */
+.reservation-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 16px; /* aby modal nedotýkal okrajů na mobilu */
+  animation: res-fade-in 0.18s ease-out;
+}
+
+@keyframes res-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Modal shell */
+.reservation-modal {
+  background: #ffffff;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 520px; /* mobil/tablet default */
+  max-height: calc(100vh - 32px);
+  box-shadow: 0 20px 46px rgba(15, 23, 42, 0.48);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* důležité: header zůstane, scrolluje body */
+  animation: res-pop 0.18s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes res-pop {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* Širší varianta pro form + summary vedle sebe */
+.reservation-modal--wide {
+  max-width: 980px;
+}
+
+/* Header (sticky vizuálně) */
+.reservation-modal__header {
+  padding: 18px 20px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #ffffff;
+}
+.reservation-modal__header h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.reservation-modal__close {
+  font-size: 24px;
+  line-height: 1;
+  text-decoration: none;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 2px 8px;
+  border-radius: 10px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.reservation-modal__close:hover {
+  color: #111827;
+  background-color: rgba(15, 23, 42, 0.06);
+}
+
+/* Body scrolluje, header zůstává */
+.reservation-modal__body {
+  padding: 16px 20px 18px;
+  overflow: auto;
+}
+
+/* Layout: mobile = pod sebou */
+.reservation-modal__layout {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.reservation-modal__formcol {
+  flex: 1;
+  min-width: 0;
+}
+
+/* =========================
+   FORM GROUPS + INPUTS
+   ========================= */
+.reservation-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+.reservation-form__group label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* jednotný look pro input/select/textarea */
+.reservation-modal input[type=text],
+.reservation-modal input[type=email],
+.reservation-modal input[type=tel],
+.reservation-modal input[type=number],
+.reservation-modal input[type=date],
+.reservation-modal select,
+.reservation-modal textarea {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid #e5e7eb;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-family: inherit;
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+}
+
+.reservation-modal textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.reservation-modal input:focus,
+.reservation-modal select:focus,
+.reservation-modal textarea:focus {
+  border-color: #03c4c9;
+  box-shadow: 0 0 0 3px rgba(3, 196, 201, 0.18);
+}
+
+/* date wrapper pokud používáš ikonku */
+.reservation-form__date-wrapper {
+  position: relative;
+}
+
+.reservation-form__date-wrapper .reservation-form__date-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  opacity: 0.65;
+}
+
+.reservation-form__date-wrapper input {
+  padding-left: 40px; /* místo pro ikonku */
+}
+
+/* =========================
+   PICKUP RADIO LIST (Nette radioList)
+   ========================= */
+.pickup-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pickup-option {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.pickup-option input[type=radio] {
+  margin-top: 2px;
+  accent-color: #03c4c9;
+}
+
+.pickup-option:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.1);
+}
+
+.pickup-option__text {
+  font-size: 14px;
+  color: #111827;
+  line-height: 1.35;
+}
+
+/* =========================
+   SUBMIT BUTTON
+   ========================= */
+.reservation-modal__submit {
+  margin-top: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 16px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(to right, #02c4c7, #08b5ff);
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(3, 196, 201, 0.52);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease, box-shadow 0.15s ease;
+}
+.reservation-modal__submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 34px rgba(3, 196, 201, 0.7);
+}
+
+/* =========================
+   PRICE SUMMARY (SIDE CARD)
+   ========================= */
+.reservation-modal__summary {
+  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+}
+
+.res-summary__title {
+  font-size: 15px;
+  font-weight: 900;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.res-summary__line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  font-size: 14px;
+  color: #111827;
+}
+.res-summary__line strong {
+  font-weight: 800;
+}
+
+.res-summary__divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 10px 0;
+}
+
+.res-summary__total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  color: #111827;
+}
+.res-summary__total span {
+  font-size: 14px;
+  font-weight: 800;
+}
+.res-summary__total strong {
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.res-summary__note {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #6b7280;
+  line-height: 1.5;
+}
+
+@media screen and (min-width: 768px) {
+  .trip-hero__title {
+    font-size: 44px;
+  }
+  .trip-hero__inner {
+    padding: 2rem 10rem;
+  }
+  /* MAIN LAYOUT */
+  .trip-main__inner {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 2rem 10rem;
+    gap: 32px;
+  }
+  .trip-main__left {
+    flex: 1.7;
+  }
+  .trip-main__right {
+    flex: 1;
+  }
+  /* TEXT SECTIONS */
+  .trip-section--columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 sloupce */
+  }
+  /* PRICE CARD */
+  .trip-price-card {
+    padding: 20px 22px 18px;
+  }
+  .trip-price-card__amount {
+    font-size: 34px;
+  }
+  /* HELP BOX */
+  .trip-help-card {
+    padding: 16px 18px;
+  }
+  .trip-help-card__button {
+    padding: 9px 14px;
+  }
+  .reservation-modal {
+    width: 100%;
+    max-width: 980px; /* aby se vešlo form + 320px summary */
+  }
+  .reservation-modal__layout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 18px;
+  }
+  .reservation-modal__formcol {
+    flex: 1;
+    min-width: 0;
+  }
+  .reservation-modal__summary {
+    width: 320px;
+    flex: 0 0 320px;
+    position: sticky;
+    top: 12px;
+  }
+}
+
+/*# sourceMappingURL=excursion-scss.css.map*/

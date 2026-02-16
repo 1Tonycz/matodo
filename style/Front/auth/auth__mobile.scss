@@ -1,0 +1,126 @@
+/* ===== PAGE WRAPPER ===== */
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f6f4f1;
+  padding: 20px;
+}
+
+/* ===== LOGIN CARD ===== */
+.auth-card {
+  width: 420px;
+  max-width: 100%;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 36px 32px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== TITLE ===== */
+.auth-card h1 {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: 26px;
+  font-weight: 800;
+  color: #1f2937;
+}
+
+/* ===== FORM ===== */
+.auth-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ===== LABELS ===== */
+.auth-card label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* ===== INPUTS ===== */
+.auth-card input[type="text"],
+.auth-card input[type="email"],
+.auth-card input[type="password"] {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  font-size: 15px;
+  background: #fafafa;
+  transition: border-color 0.2s, box-shadow 0.2s;
+
+  &:focus {
+    outline: none;
+    border-color: #18c3d3;
+    box-shadow: 0 0 0 3px rgba(24, 195, 211, 0.25);
+    background: #ffffff;
+  }
+}
+
+/* ===== ERROR MESSAGE ===== */
+.auth-card .error,
+.auth-card .form-error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.auth-card input[type="submit"],
+.auth-card button[type="submit"] {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  background: #18c3d3;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+
+  &:hover {
+    background: #13afbe;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ===== FLASH MESSAGES ===== */
+.flash {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+
+  &.success {
+    background: #dcfce7;
+    color: #166534;
+  }
+
+  &.error {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 480px) {
+  .auth-card {
+    padding: 28px 22px;
+  }
+
+  .auth-card h1 {
+    font-size: 22px;
+  }
+}

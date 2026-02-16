@@ -1,0 +1,250 @@
+{var $css = "transfer"}
+{var $js = "transfer"}
+{block content}
+<section class="transfer-admin">
+
+    <header class="transfer-admin__header">
+        <h1 class="transfer-admin__title">Správa Transferů</h1>
+        <p class="transfer-admin__subtitle">Rezervace luxusního Chevrolet Suburban</p>
+    </header>
+
+    {* Statistiky *}
+  <div class="transfer-stats">
+            <div class="transfer-stat">
+                <div class="transfer-stat__label">Celkem rezervací</div>
+                <div class="transfer-stat__value">{$stats['total']}</div>
+            </div>
+
+            <div class="transfer-stat">
+                <div class="transfer-stat__label">Čeká na potvrzení</div>
+                <div class="transfer-stat__value transfer-stat__value--waiting">{$stats['waiting']}</div>
+            </div>
+
+            <div class="transfer-stat">
+                <div class="transfer-stat__label">Potvrzeno</div>
+                <div class="transfer-stat__value transfer-stat__value--confirmed">{$stats['confirmed']}</div>
+            </div>
+  </div>
+
+  {* Seznam rezervací *}
+    <div class="transfer-panel">
+        <div class="transfer-panel__head">
+            <div class="transfer-panel__title">
+                <span class="transfer-panel__icon" aria-hidden="true">🚗</span>
+                Rezervace transferů
+            </div>
+        </div>
+
+        <div class="transfer-panel__body">
+
+            {foreach $transfers as $t}
+                <article class="transfer-item">
+                    <div class="transfer-item__main">
+
+                        <div class="transfer-item__top">
+                            <div class="transfer-item__name">{$t->customer_name}</div>
+
+                            {if $t->status === 'pending'}
+                                <span class="transfer-badge transfer-badge--waiting">Čeká</span>
+                            {elseif $t->status === 'confirm'}
+                                <span class="transfer-badge transfer-badge--confirmed">Potvrzeno</span>
+                            {else}
+                                <span class="transfer-badge">Zrušeno</span>
+                            {/if}
+                        </div>
+
+                        <div class="transfer-item__meta">
+                            <div class="transfer-meta">
+                                <span class="transfer-meta__icon" aria-hidden="true">📅</span>
+                                <span>{$t->pickup_date|date:'j. n. Y'}</span>
+                            </div>
+
+                            <div class="transfer-meta">
+                                <span class="transfer-meta__icon" aria-hidden="true">🕒</span>
+                                <span>{$t->pickup_time->format('%H:%I')}</span>
+                            </div>
+
+                            <div class="transfer-meta">
+                                <span class="transfer-meta__icon" aria-hidden="true">👥</span>
+                                <span>{$t->passagers}</span>
+                            </div>
+                        </div>
+
+                        <div class="transfer-item__route">
+                            <span class="transfer-meta__icon" aria-hidden="true">📍</span>
+                            <span>{$t->pickup_location} → {$t->dropoff_location}</span>
+                        </div>
+
+                    </div>
+
+                    <div class="transfer-item__actions">
+                        <a n:href="detail!, id => $t->id" class="tbtn tbtn--ghost">ℹ Detail</a>
+                        <a n:href="confirm!, id => $t->id" class="tbtn tbtn--primary">Potvrdit</a>
+                        <a n:href="email!, id => $t->id" class="tbtn tbtn--ghost">Email</a>
+                        <a n:href="delete!, id => $t->id"
+                                class="tbtn tbtn--danger"
+                                onclick="return confirm('Opravdu smazat rezervaci?')">Smazat</a>
+                    </div>
+
+                </article>
+            {/foreach}
+
+        </div>
+    </div>
+
+</section>
+
+{if $showTransferDetailModal}
+    <div class="tdm-backdrop" data-modal="transfer-detail">
+        <div class="tdm-modal" role="dialog" aria-modal="true" aria-label="Detail rezervace transferu">
+
+            <div class="tdm-header">
+                <h2 class="tdm-title">Detail rezervace transferu</h2>
+                <a n:href="this" class="tdm-close" aria-label="Zavřít" data-modal-close>
+                    ×
+                </a>
+            </div>
+
+            <div class="tdm-body">
+
+                <div class="tdm-topgrid">
+                    <div class="tdm-block">
+                        <div class="tdm-label">Zákazník</div>
+                        <div class="tdm-strong">{$detail->customer_name}</div>
+                    </div>
+
+                    <div class="tdm-block tdm-block--right">
+                        <div class="tdm-label">Stav</div>
+
+                        {if $detail->status === 'pending'}
+                            <span class="tdm-badge tdm-badge--waiting">Čeká</span>
+                        {elseif $detail->status === 'confirm'}
+                            <span class="tdm-badge tdm-badge--confirmed">Potvrzeno</span>
+                        {else}
+                            <span class="tdm-badge">Zrušeno</span>
+                        {/if}
+                    </div>
+
+                    <div class="tdm-contact tdm-contact--email">
+                        <span class="tdm-ico" aria-hidden="true">✉️</span>
+                        <a href="mailto:{$detail->customer_email}" class="tdm-link">{$detail->customer_email}</a>
+                    </div>
+
+                    <div class="tdm-contact tdm-contact--phone">
+                        <span class="tdm-ico" aria-hidden="true">📞</span>
+                        <a href="tel:{$detail->customer_phone}" class="tdm-link">{$detail->customer_phone}</a>
+                    </div>
+                </div>
+
+                <hr class="tdm-sep">
+
+                <div class="tdm-meta">
+                    <div class="tdm-meta-item">
+                        <span class="tdm-ico" aria-hidden="true">📅</span>
+                        <span>{$detail->pickup_date|date:'j. n. Y'}</span>
+                    </div>
+
+                    <div class="tdm-meta-item">
+                        <span class="tdm-ico" aria-hidden="true">🕒</span>
+                        <span>{$detail->pickup_time->format('%H:%I')}</span>
+                    </div>
+
+                    <div class="tdm-meta-item">
+                        <span class="tdm-ico" aria-hidden="true">👥</span>
+                        <span>{$detail->passagers} pasažérů</span>
+                    </div>
+                </div>
+
+                <hr class="tdm-sep">
+
+                <div class="tdm-section">
+                    <div class="tdm-label">Trasa</div>
+
+                    <div class="tdm-route">
+                        <div class="tdm-route-row">
+                            <div class="tdm-route-k">Z:</div>
+                            <div class="tdm-route-v">{$detail->pickup_location}</div>
+                        </div>
+                        <div class="tdm-route-row">
+                            <div class="tdm-route-k">Do:</div>
+                            <div class="tdm-route-v">{$detail->dropoff_location}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tdm-footer">
+                    Vytvořeno: {$detail->created_at|date:'j. n. Y H:i'}
+                </div>
+
+            </div>
+        </div>
+    </div>
+{/if}
+
+{if $showEmailModal && $emailTransfer}
+    <div class="reservations-modal-backdrop">
+        <div class="reservations-modal reservations-modal--email">
+            <div class="reservations-modal__header">
+                <h2>E-mail k rezervaci</h2>
+                <a n:href="this" class="reservations-modal__close">×</a>
+            </div>
+
+            <div class="reservations-modal__info">
+                <div><strong>{$emailTransfer->customer_name}</strong></div>
+                <div>Email: <strong>{$emailTransfer->customer_email}</strong></div>
+            </div>
+
+            <div class="reservations-modal__body">
+                {form emailForm}
+                    {input id}
+
+                    <div class="reservations-form__group">
+                        <label for="frm-emailForm-subject">Předmět *</label>
+                        {input subject}
+                    </div>
+
+                    <div class="reservations-form__group">
+                        <label for="frm-emailForm-message">Zpráva *</label>
+                        {input message}
+                    </div>
+
+                    <button n:name="send" class="reservations-modal__submit">
+                        Odeslat e-mail
+                    </button>
+                {/form}
+            </div>
+        </div>
+    </div>
+{/if}
+{if $showConfirmModal && $confirmTransfer}
+    <div class="reservations-modal-backdrop">
+        <div class="reservations-modal reservations-modal--confirm">
+            <div class="reservations-modal__header">
+                <h2>Potvrdit rezervaci</h2>
+                <a n:href="this" class="reservations-modal__close">×</a>
+            </div>
+
+            <div class="reservations-modal__info">
+                <div><strong>{$confirmTransfer->customer_name}</strong></div>
+                <div>Datum: <strong>{$confirmTransfer->pickup_date|date:'j. n. Y'} {$confirmTransfer->pickup_time->format('%H:%I')}</strong></div>
+                <div>Osob: <strong>{$confirmTransfer->passagers}</strong></div>
+            </div>
+
+            <div class="reservations-modal__body">
+                {form transferConfirmForm}
+                    {input id}
+
+                    <div class="reservations-form__group">
+                        <label for="frm-reservationConfirmForm-time">Částka za transfer v USD *</label>
+                        {input price}
+                    </div>
+
+                    <button n:name="send" class="reservations-modal__submit">
+                        Potvrdit rezervaci
+                    </button>
+                {/form}
+            </div>
+        </div>
+    </div>
+{/if}
+

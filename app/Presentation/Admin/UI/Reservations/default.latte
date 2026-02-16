@@ -1,0 +1,276 @@
+{var $css = 'reservations'}
+{block content}
+<div class="reservations-page">
+    <h1>Rezervace</h1>
+    <p class="admin-subtitle">Správa rezervací výletů</p>
+
+    <div class="reservations-list">
+        {foreach $reservations as $res}
+
+            <div class="reservation-card">
+
+                <div class="reservation-card__header">
+                    <div>
+                        <div class="reservation-card__name">
+                            {$res->customer_name}
+
+                            <span class="reservation-badge reservation-badge-{$res->status}">{if $res->status == 'pending'}Čeká{elseif $res->status == 'confirm'}Potvrzeno{else}Zrušeno{/if}</span>
+                        </div>
+
+                        <div class="reservation-card__trip">
+                            {$res->trip->title}
+                        </div>
+                    </div>
+
+                    <div class="reservation-card__actions">
+                        <a n:href="detail! $res->id" class="btn-rsv btn-rsv--info">ℹ Detail</a>
+                        <a n:href="confirm! $res->id" class="btn-rsv btn-rsv--ok">✔ Potvrdit</a>
+                        <a n:href="email! $res->id" class="btn-rsv btn-rsv--email">✉ Email</a>
+                        <a n:href="cancel! $res->id" class="btn-rsv btn-rsv--danger">🗑 Zrušit</a>
+                    </div>
+                </div>
+
+                <div class="reservation-card__info">
+                    <div class="reservation-info-item">
+                        📅 {$res->date|date:'j. F Y'}
+                    </div>
+
+                    <div class="reservation-info-item">
+                        👤 {$res->guests} osob
+                    </div>
+
+                    <div class="reservation-info-item">
+                        ✉ {$res->customer_email}
+                    </div>
+
+                    <div class="reservation-info-item">
+                        ☎ {$res->customer_phone}
+                    </div>
+                </div>
+
+                <div class="reservation-card__created">
+                    Vytvořeno: {$res->created_at|date:'j. F Y, H:i'}
+                </div>
+
+            </div>
+
+        {/foreach}
+    </div>
+</div>
+{if $showConfirmModal && $confirmReservation}
+    <div class="reservations-modal-backdrop">
+        <div class="reservations-modal reservations-modal--confirm">
+            <div class="reservations-modal__header">
+                <h2>Potvrdit rezervaci</h2>
+                <a n:href="this" class="reservations-modal__close">×</a>
+            </div>
+
+            <div class="reservations-modal__info">
+                <div><strong>{$confirmReservation->customer_name}</strong></div>
+                <div>Výlet: <strong>{$confirmReservation->trip->title}</strong></div>
+                <div>Datum: <strong>{$confirmReservation->date|date:'j. n. Y'}</strong></div>
+                <div>Osob: <strong>{$confirmReservation->guests}</strong></div>
+            </div>
+
+            <div class="reservations-modal__body">
+                {form reservationConfirmForm}
+                    {input id}
+
+                    <div class="reservations-form__group">
+                        <label for="frm-reservationConfirmForm-time">Čas vyzvednutí *</label>
+                        {input time}
+                    </div>
+
+                    <button n:name="send" class="reservations-modal__submit">
+                        Potvrdit rezervaci
+                    </button>
+                {/form}
+            </div>
+        </div>
+    </div>
+{/if}
+
+{* ===== MODAL – VLASTNÍ E-MAIL ===== *}
+{if $showEmailModal && $emailReservation}
+    <div class="reservations-modal-backdrop">
+        <div class="reservations-modal reservations-modal--email">
+            <div class="reservations-modal__header">
+                <h2>E-mail k rezervaci</h2>
+                <a n:href="this" class="reservations-modal__close">×</a>
+            </div>
+
+            <div class="reservations-modal__info">
+                <div><strong>{$emailReservation->customer_name}</strong></div>
+                <div>Výlet: <strong>{$emailReservation->trip->title}</strong></div>
+                <div>Email: <strong>{$emailReservation->customer_email}</strong></div>
+            </div>
+
+            <div class="reservations-modal__body">
+                {form emailForm}
+                    {input id}
+
+                    <div class="reservations-form__group">
+                        <label for="frm-emailForm-subject">Předmět *</label>
+                        {input subject}
+                    </div>
+
+                    <div class="reservations-form__group">
+                        <label for="frm-emailForm-message">Zpráva *</label>
+                        {input message}
+                    </div>
+
+                    <button n:name="send" class="reservations-modal__submit">
+                        Odeslat e-mail
+                    </button>
+                {/form}
+            </div>
+        </div>
+    </div>
+{/if}
+{* ===== MODAL – DETAIL REZERVACE ===== *}
+{if $showDetailModal && $detailReservation}
+    <div class="reservations-modal-backdrop">
+        <div class="reservations-modal reservations-modal--detail">
+            <div class="reservations-modal__header">
+                <h2>Detail rezervace</h2>
+                <a n:href="this" class="reservations-modal__close">×</a>
+            </div>
+
+            <div class="reservation-detail">
+
+                <section class="reservation-detail__section">
+                    <h3>Zákazník</h3>
+
+                    <div class="reservation-detail__row">
+                        <div class="reservation-detail__field">
+                            <div class="reservation-detail__label">Jméno:</div>
+                            <div class="reservation-detail__value">
+                                {$detailReservation->customer_name}
+                            </div>
+                        </div>
+
+                        <div class="reservation-detail__field">
+                            <div class="reservation-detail__label">Email:</div>
+                            <div class="reservation-detail__value">
+                                {$detailReservation->customer_email}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reservation-detail__row">
+                        <div class="reservation-detail__field">
+                            <div class="reservation-detail__label">Telefon:</div>
+                            <div class="reservation-detail__value">
+                                {$detailReservation->customer_phone}
+                            </div>
+                        </div>
+
+                        <div class="reservation-detail__field">
+                            <div class="reservation-detail__label">Počet osob:</div>
+                            <div class="reservation-detail__value">
+                                {$detailReservation->guests}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reservation-detail__row">
+                        <div class="reservation-detail__field">
+                            <div class="reservation-detail__label">Místo vyzvednutí:</div>
+                            <div class="reservation-detail__value">
+                                {$detailReservation->pickup_point}
+                            </div>
+                        </div>
+
+                        <div class="reservation-detail__field">
+                            <div class="reservation-detail__label">Poznámka:</div>
+                            <div class="reservation-detail__value">
+                                {$detailReservation->notes}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="reservation-detail__section">
+                    <h3>Výlet</h3>
+
+                    <div class="reservation-detail__row">
+                        <div class="reservation-detail__field reservation-detail__field--full">
+                            <div class="reservation-detail__label">Název:</div>
+                            <div class="reservation-detail__value">
+                                <a n:href=":Front:Excursion:default $detailReservation->trip->id"
+                                        target="_blank"
+                                        class="reservation-detail__trip-link">
+                                    {$detailReservation->trip->title}
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reservation-detail__row">
+                        <div class="reservation-detail__field">
+                            <div class="reservation-detail__label">Lokace:</div>
+                            <div class="reservation-detail__value">
+                                {$detailReservation->trip->location}
+                            </div>
+                        </div>
+
+                        <div class="reservation-detail__field">
+                            <div class="reservation-detail__label">Délka:</div>
+                            <div class="reservation-detail__value">
+                                {$detailReservation->trip->duration}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reservation-detail__row">
+                        <div class="reservation-detail__field">
+                            <div class="reservation-detail__label">Cena:</div>
+                            <div class="reservation-detail__value">
+                                {$detailReservation->trip->price|number:0,',',' '} USD
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="reservation-detail__section">
+                    <h3>Rezervace</h3>
+
+                    <div class="reservation-detail__row">
+                        <div class="reservation-detail__field">
+                            <div class="reservation-detail__label">Datum:</div>
+                            <div class="reservation-detail__value">
+                                {$detailReservation->date|date:'j. n. Y'}
+                            </div>
+                        </div>
+
+                        <div class="reservation-detail__field">
+                            <div class="reservation-detail__label">Status:</div>
+                            <div class="reservation-detail__value">
+                                <span class="reservation-status reservation-status--{$detailReservation->status}">
+                                    {if $detailReservation->status === 'confirm'}
+                                        Potvrzeno
+                                    {elseif $detailReservation->status === 'canceled'}
+                                        Zrušeno
+                                    {else}
+                                        Čeká
+                                    {/if}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="reservation-detail__row">
+                        <div class="reservation-detail__field reservation-detail__field--full">
+                            <div class="reservation-detail__label">Vytvořeno:</div>
+                            <div class="reservation-detail__value">
+                                {$detailReservation->created_at|date:'j. n. Y, H:i'}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+{/if}
+

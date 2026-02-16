@@ -1,0 +1,5 @@
+@import "Root/root";
+@import "calendar/calendar__mobile.scss";
+@include from(tablet){
+  @import "calendar/calendar__desktop.scss";
+}

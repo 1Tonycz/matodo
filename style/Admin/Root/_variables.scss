@@ -1,0 +1,312 @@
+$admin-bg: #f5f7fb;
+$admin-sidebar-bg: #ffffff;
+$admin-accent: #03c4c9;
+$admin-accent-soft: #e5fbfc;
+$admin-text: #1f2933;
+$admin-muted: #9aa5b1;
+$admin-border: #e1e4ea;
+$admin-danger: #e02424;
+$white: #ffffff;
+$light-blue: #3a86ff;
+$admin-success: #16a34a;
+$admin-warning: #f97316;
+$admin-top-bg: #f9fafb;
+$admin-mostviewed-bg: #e0fbff;
+$admin-profit-positive: #16a34a;
+$admin-profit-negative: #dc2626;
+$admin-calendar-event-bg: #ffe8bc;
+$admin-calendar-selected-bg: $admin-accent;
+$admin-calendar-selected-text: #ffffff;
+$res-admin-bg: #f7f5f0;
+$res-admin-text: #111827;
+$res-admin-muted: #6b7280;
+$res-admin-border: #e5e7eb;
+$res-admin-accent: #03c4c9;
+
+$admin-radius-lg: 18px;
+$admin-radius-full: 999px;
+
+$admin-shadow-soft: 0 8px 16px rgba(0, 0, 0, 0.08);
+$admin-shadow-light: 0 6px 14px rgba(0, 0, 0, 0.06);
+
+
+
+$admin-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+body {
+        background-color: $admin-bg;
+        font-family: $admin-font;
+}
+
+.admin-layout {
+        display: flex;
+        min-height: 100vh;
+}
+
+.admin-sidebar {
+        width: 260px;
+        background-color: $admin-sidebar-bg;
+        border-right: 1px solid $admin-border;
+        padding: 24px 18px;
+        display: flex;
+        flex-direction: column;
+}
+
+.admin-content {
+        flex: 1;
+        padding: 24px 32px;
+}
+
+// =========================
+// Sidebar header
+// =========================
+
+.admin-sidebar__header {
+        margin-bottom: 16px;
+
+        .admin-sidebar__title {
+                font-size: 20px;
+                font-weight: 700;
+                color: $admin-text;
+        }
+
+        .admin-sidebar__email {
+                font-size: 13px;
+                color: $admin-muted;
+                margin-top: 4px;
+        }
+}
+
+// =========================
+// Dividers
+// =========================
+
+.admin-sidebar__divider {
+        border: none;
+        border-top: 1px solid $admin-border;
+        margin: 10px 0 16px;
+
+        &--bottom {
+                margin-top: auto;
+                margin-bottom: 16px;
+        }
+}
+
+// =========================
+// Navigation
+// =========================
+
+.admin-sidebar__nav {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+}
+
+.admin-sidebar__nav-item {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 14px;
+        padding: 10px 14px;
+        border-radius: $admin-radius-lg;
+        color: $admin-text;
+        text-decoration: none;
+        transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+
+        .admin-sidebar__nav-icon {
+                font-size: 18px;
+                width: 20px;
+                text-align: center;
+        }
+
+        &:hover {
+                background-color: $admin-accent-soft;
+        }
+
+        &.is-active {
+                background-color: $admin-accent;
+                color: #ffffff;
+                box-shadow: $admin-shadow-soft;
+
+                .admin-sidebar__nav-icon {
+                        opacity: 0.95;
+                }
+        }
+}
+
+// =========================
+// Bottom block
+// =========================
+
+.admin-sidebar__bottom {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+}
+
+// Back button
+.admin-sidebar__back {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 12px 14px;
+        border-radius: $admin-radius-full;
+        background-color: #faf9f6;
+        border: 1px solid #f0eee7;
+        text-decoration: none;
+        font-size: 14px;
+        color: $admin-text;
+        transition: box-shadow 0.15s ease, transform 0.1s ease;
+
+        &:hover {
+                box-shadow: $admin-shadow-light;
+                transform: translateY(-1px);
+        }
+
+        .admin-sidebar__back-icon {
+                font-size: 16px;
+        }
+}
+
+// Logout
+.admin-sidebar__logout {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 14px;
+        color: $admin-danger;
+        text-decoration: none;
+        margin-top: 4px;
+
+        &:hover {
+                text-decoration: underline;
+        }
+
+        .admin-sidebar__logout-icon {
+                font-size: 16px;
+        }
+}
+
+.flash-container {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 2000;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+}
+
+/* základní vzhled */
+.flash {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .8rem;
+
+        padding: 1rem 1.4rem;
+        border-radius: 12px;
+        color: $white;
+        min-width: 260px;
+        max-width: 350px;
+
+        box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        animation: fadeIn .25s ease;
+}
+
+/* typ success */
+.flash--success {
+        background: #28c76f;
+}
+
+/* typ error/danger */
+.flash--danger,
+.flash--error {
+        background: #ea5455;
+}
+
+/* typ info */
+.flash--info {
+        background:  $light-blue;
+}
+
+/* close button */
+.flash__close {
+        cursor: pointer;
+        font-size: 1.2rem;
+        background: transparent;
+        border: none;
+        color: $white;
+        padding: 0;
+}
+
+/* animace */
+@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to   { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+//BREAKPOINTS
+$breakpoints: (
+        mobile--small: 480px,
+        mobile: 576px,
+        tablet: 768px,
+        notebook--small: 1024px,
+        notebook: 1200px,
+        notebook--large: 1440px,
+        desktop: 1740px
+);
+
+
+//MAX WIDTHS
+$containers-max-width: (
+        mobile--small: 450px,
+        mobile: 540px,
+        tablet: 720px,
+        notebook--small: 992px,
+        notebook: 1140px,
+        notebook--large: 1360px,
+        desktop: 1660px
+);
+
+//FONT WEIGHTS
+$fw-light: 300;
+$fw-regular: 400;
+$fw-medium: 500;
+$fw-bold: 700;
+
+
+//FONT SIZES
+$font-size: (
+        small: (
+                h1: calc(1.375rem + 1.5vw),
+                h2: calc(1.325rem + .9vw),
+                h3: calc(1.3rem + .6vw),
+                h4: calc(1.275rem + .3vw),
+                h5: 1.25rem,
+                h6: 1rem
+        ),
+        large: (
+                h1: 2.5rem,
+                h2: 2rem,
+                h3: 1.75rem,
+                h4: 1.5rem,
+                h5: 1.25rem,
+                h6: 1rem
+        )
+);
+
+//GAPS
+$gaps: (
+        xxs: .25,
+        xs: .5,
+        sm: 1,
+        md: 2,
+        lg: 3,
+        xl: 5,
+        xxl: 10,
+        xxxl: 15
+)

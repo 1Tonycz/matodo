@@ -1,0 +1,720 @@
+/*!*****************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./style/Admin/trips.scss ***!
+  \*****************************************************************************************************************/
+@charset "UTF-8";
+body {
+  background-color: #f5f7fb;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: 260px;
+  background-color: #ffffff;
+  border-right: 1px solid #e1e4ea;
+  padding: 24px 18px;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 24px 32px;
+}
+
+.admin-sidebar__header {
+  margin-bottom: 16px;
+}
+.admin-sidebar__header .admin-sidebar__title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2933;
+}
+.admin-sidebar__header .admin-sidebar__email {
+  font-size: 13px;
+  color: #9aa5b1;
+  margin-top: 4px;
+}
+
+.admin-sidebar__divider {
+  border: none;
+  border-top: 1px solid #e1e4ea;
+  margin: 10px 0 16px;
+}
+.admin-sidebar__divider--bottom {
+  margin-top: auto;
+  margin-bottom: 16px;
+}
+
+.admin-sidebar__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.admin-sidebar__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 18px;
+  color: #1f2933;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.admin-sidebar__nav-item .admin-sidebar__nav-icon {
+  font-size: 18px;
+  width: 20px;
+  text-align: center;
+}
+.admin-sidebar__nav-item:hover {
+  background-color: #e5fbfc;
+}
+.admin-sidebar__nav-item.is-active {
+  background-color: #03c4c9;
+  color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+.admin-sidebar__nav-item.is-active .admin-sidebar__nav-icon {
+  opacity: 0.95;
+}
+
+.admin-sidebar__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-sidebar__back {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: 999px;
+  background-color: #faf9f6;
+  border: 1px solid #f0eee7;
+  text-decoration: none;
+  font-size: 14px;
+  color: #1f2933;
+  transition: box-shadow 0.15s ease, transform 0.1s ease;
+}
+.admin-sidebar__back:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+.admin-sidebar__back .admin-sidebar__back-icon {
+  font-size: 16px;
+}
+
+.admin-sidebar__logout {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #e02424;
+  text-decoration: none;
+  margin-top: 4px;
+}
+.admin-sidebar__logout:hover {
+  text-decoration: underline;
+}
+.admin-sidebar__logout .admin-sidebar__logout-icon {
+  font-size: 16px;
+}
+
+.flash-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* základní vzhled */
+.flash {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  padding: 1rem 1.4rem;
+  border-radius: 12px;
+  color: #ffffff;
+  min-width: 260px;
+  max-width: 350px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.25s ease;
+}
+
+/* typ success */
+.flash--success {
+  background: #28c76f;
+}
+
+/* typ error/danger */
+.flash--danger,
+.flash--error {
+  background: #ea5455;
+}
+
+/* typ info */
+.flash--info {
+  background: #3a86ff;
+}
+
+/* close button */
+.flash__close {
+  cursor: pointer;
+  font-size: 1.2rem;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 0;
+}
+
+/* animace */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+:root {
+  font-size: 16px;
+  font-weight: 400;
+  scroll-behavior: smooth;
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+body,
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex-grow: 1;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+h1 {
+  font-size: calc(1.375rem + 1.5vw);
+}
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+}
+
+h2 {
+  font-size: calc(1.325rem + 0.9vw);
+}
+@media screen and (min-width: 768px) {
+  h2 {
+    font-size: 2rem;
+  }
+}
+
+h3 {
+  font-size: calc(1.3rem + 0.6vw);
+}
+@media screen and (min-width: 768px) {
+  h3 {
+    font-size: 1.75rem;
+  }
+}
+
+h4 {
+  font-size: calc(1.275rem + 0.3vw);
+}
+@media screen and (min-width: 768px) {
+  h4 {
+    font-size: 1.5rem;
+  }
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+@media screen and (min-width: 768px) {
+  h5 {
+    font-size: 1.25rem;
+  }
+}
+
+h6 {
+  font-size: 1rem;
+}
+@media screen and (min-width: 768px) {
+  h6 {
+    font-size: 1rem;
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+ul, ol {
+  padding-left: 1.5em;
+}
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+textarea,
+input,
+button {
+  font-family: inherit;
+}
+
+iframe {
+  border: none;
+}
+
+sup,
+sub,
+small {
+  font-size: smaller;
+}
+
+.modal-window--trip {
+  width: 720px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.trip-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.trip-form__row {
+  display: flex;
+  gap: 12px;
+}
+.trip-form__row--textarea {
+  align-items: stretch;
+}
+.trip-form__row--textarea textarea {
+  height: 110px;
+}
+
+.trip-form__group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.trip-form__group label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1f2933;
+}
+.trip-form__group input[type=text],
+.trip-form__group input[type=number],
+.trip-form__group textarea {
+  border-radius: 18px;
+  border: 1px solid #e1e4ea;
+  padding: 8px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  background-color: #fdfdfd;
+}
+.trip-form__group input[type=text]:focus,
+.trip-form__group input[type=number]:focus,
+.trip-form__group textarea:focus {
+  border-color: #03c4c9;
+  box-shadow: 0 0 0 2px rgba(3, 196, 201, 0.2);
+}
+.trip-form__group input[type=file] {
+  font-size: 13px;
+}
+
+.trip-modal-submit {
+  margin-top: 16px;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  background-color: #03c4c9;
+  color: #ffffff;
+  padding: 11px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(3, 196, 201, 0.55);
+  transition: background-color 0.15s ease, transform 0.1s ease, box-shadow 0.15s ease;
+}
+.trip-modal-submit:hover {
+  background-color: rgb(2.7, 176.4, 180.9);
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(3, 196, 201, 0.7);
+}
+
+@media screen and (min-width: 768px) {
+  .trips-page {
+    margin-top: 10px;
+  }
+  .trips-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 18px;
+  }
+  .trips-header h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2933;
+    margin-bottom: 4px;
+  }
+  .trips-header p {
+    font-size: 14px;
+    color: #9aa5b1;
+    margin: 0;
+  }
+  .trips-new-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background-color: #03c4c9;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: 0 10px 26px rgba(3, 196, 201, 0.45);
+    transition: transform 0.1s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  }
+  .trips-new-btn span:first-child {
+    font-size: 18px;
+    line-height: 1;
+  }
+  .trips-new-btn:hover {
+    background-color: rgb(2.7, 176.4, 180.9);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(3, 196, 201, 0.6);
+  }
+  .trips-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+  /* karta výletu */
+  .trip-card {
+    background: #ffffff;
+    border-radius: 26px;
+    border: 1px solid #e1e4ea;
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.05);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .trip-card__image-wrapper {
+    position: relative;
+    border-radius: 24px 24px 0 0;
+    overflow: hidden;
+    height: 210px;
+  }
+  .trip-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .trip-card__badge {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background-color: #03c4c9;
+    color: #ffffff;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(3, 196, 201, 0.65);
+  }
+  .trip-card__body {
+    padding: 16px 18px 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+  }
+  .trip-card__title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1f2933;
+    margin: 0 0 8px;
+  }
+  .trip-card__description {
+    font-size: 14px;
+    color: #1f2933;
+    margin: 0 0 12px;
+  }
+  .trip-card__meta {
+    font-size: 13px;
+    color: #9aa5b1;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  /* tlačítka dole */
+  .trip-card__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .btn-trip {
+    border-radius: 999px;
+    border: 1px solid transparent;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background-color: #f9fafb;
+    color: #1f2933;
+    transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+  }
+  .btn-trip:hover {
+    box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
+    transform: translateY(-1px);
+  }
+  .btn-trip--primary {
+    background-color: #ffffff;
+    border-color: #e1e4ea;
+  }
+  .btn-trip--danger {
+    background-color: #fef2f2;
+    border-color: #fecaca;
+    color: #dc2626;
+  }
+  .btn-trip--danger:hover {
+    background-color: #fee2e2;
+  }
+  /* ============================================
+     MODAL — BACKDROP
+     ============================================ */
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(15, 23, 42, 0.65); /* tmavé pozadí */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    animation: fadeIn 0.25s ease;
+  }
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  /* ============================================
+     MODAL — OKNO
+     ============================================ */
+  .modal-window {
+    background: #ffffff;
+    border-radius: 24px;
+    padding: 22px 26px 26px;
+    width: 520px;
+    max-width: 95%;
+    max-height: 90vh;
+    box-shadow: 0 20px 40px rgba(15, 23, 42, 0.4);
+    overflow-y: auto;
+    animation: modalPop 0.25s ease;
+  }
+  @keyframes modalPop {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  /* Rozšířená varianta modálu (např. pro výlet) */
+  .modal-window--trip {
+    width: 760px;
+    max-height: 92vh;
+  }
+  /* ============================================
+     MODAL — HLAVIČKA
+     ============================================ */
+  .modal-window__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .modal-window__header h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1e293b; /* admin-text */
+  }
+  .modal-window__close {
+    font-size: 24px;
+    line-height: 1;
+    text-decoration: none;
+    color: #94a3b8; /* admin-muted */
+    cursor: pointer;
+    transition: color 0.15s ease;
+  }
+  .modal-window__close:hover {
+    color: #0f172a; /* tmavší text */
+  }
+  /* ============================================
+     MODAL — BLok DOTAZU (použitý u dotazů)
+     ============================================ */
+  .modal-window__question {
+    background-color: #f5f4f1;
+    border-radius: 18px;
+    padding: 12px 14px;
+    margin-bottom: 18px;
+  }
+  .modal-window__question-name {
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .modal-window__question-text {
+    white-space: pre-line; /* zachová Enters */
+    font-size: 14px;
+    color: #1e293b;
+  }
+  /* ============================================
+     FORM — TEXTAREA, INPUTS
+     ============================================ */
+  .modal-window__textarea textarea,
+  .trip-form textarea,
+  .trip-form input[type=text],
+  .trip-form input[type=number],
+  .trip-form input[type=file],
+  .trip-form select {
+    width: 100%;
+    border-radius: 18px;
+    border: 1px solid #d1d5db; /* admin-border */
+    background-color: #fdfdfd;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .modal-window__textarea textarea:focus,
+  .trip-form textarea:focus,
+  .trip-form input[type=text]:focus,
+  .trip-form input[type=number]:focus,
+  .trip-form input[type=file]:focus,
+  .trip-form select:focus {
+    border-color: #03c4c9; /* admin-accent */
+    box-shadow: 0 0 0 3px rgba(3, 196, 201, 0.2);
+  }
+  /* ============================================
+     MODAL — SUBMIT TLAČÍTKO
+     ============================================ */
+  .modal-submit,
+  .trip-modal-submit {
+    margin-top: 14px;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    background-color: #03c4c9; /* admin-accent */
+    border-radius: 999px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 10px 26px rgba(3, 196, 201, 0.55);
+    transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+  }
+  .modal-submit:hover,
+  .trip-modal-submit:hover {
+    background-color: #00a9ad;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 30px rgba(3, 196, 201, 0.7);
+  }
+  /* ============================================
+     ROZLOŽENÍ FORMULÁŘE — výlet modal
+     ============================================ */
+  .trip-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .trip-form__row {
+    display: flex;
+    gap: 16px;
+  }
+  .trip-form__group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .trip-form__group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #1e293b;
+  }
+  /* Textarea řádek */
+  .trip-form__row--textarea textarea {
+    height: 120px;
+  }
+  /* Scrollbar styling (optional) */
+  .modal-window::-webkit-scrollbar {
+    width: 8px;
+  }
+  .modal-window::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+  }
+}
+
+/*# sourceMappingURL=trips-scss.css.map*/

@@ -1,0 +1,61 @@
+.site-footer__inner {
+  padding: 2rem 10rem;  /* desktop paddingy */
+  grid-template-columns: 2fr 1fr 1fr; /* desktop: 3 sloupce */
+  gap: 40px;
+}
+
+.site-footer__logo-text {
+  font-size: 22px; /* desktop větší font */
+}
+
+/* Sloupce */
+.site-footer__column {
+  h3 {
+    font-size: 15px;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li + li {
+    margin-top: 4px;
+  }
+
+  a {
+    color: $footer-muted;
+    text-decoration: none;
+
+    &:hover {
+      color: $footer-text;
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Spodní řádek */
+.site-footer__bottom {
+  font-size: 14px; /* desktop větší font */
+}
+
+/* SOCIAL BUTTONS */
+.site-footer__social-buttons {
+  gap: 12px; /* desktop větší mezera mezi ikonkama */
+}
+
+/* Flash */
+.flash-container {
+  top: 30px;
+  right: 30px;
+}
+
+.flash {
+  min-width: 320px;  /* desktop širší flash */
+  max-width: 380px;
+  padding: 1rem 1.8rem;
+}
+
+.flash__close {
+  font-size: 1.4rem;
+}

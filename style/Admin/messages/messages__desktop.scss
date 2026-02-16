@@ -1,0 +1,245 @@
+.inquiries-page {
+  margin-top: 10px;
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    color: $admin-text;
+    margin-bottom: 2px;
+  }
+
+  .admin-subtitle {
+    font-size: 14px;
+    color: $admin-muted;
+    margin-bottom: 18px;
+  }
+}
+
+.inquiry-card {
+  background: #ffffff;
+  border-radius: 24px;
+  border: 1px solid $admin-border;
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.04);
+  padding: 22px 26px;
+  margin-bottom: 18px;
+}
+
+.inquiry-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.inquiry-card__name {
+  font-size: 20px;
+  font-weight: 700;
+  color: $admin-text;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inquiry-card__email {
+  font-size: 14px;
+  color: $admin-muted;
+  margin-top: 4px;
+}
+
+.inquiry-card__date {
+  font-size: 13px;
+  color: $admin-muted;
+}
+
+.inquiry-card__message {
+  margin-top: 16px;
+  font-size: 15px;
+  color: $admin-text;
+}
+
+/* badge Zodpovězeno */
+
+.inquiry-badge {
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+
+  &--green {
+    background-color: #dcfce7;
+    color: #16a34a;
+  }
+}
+
+/* odpověď admina */
+
+.inquiry-card__answer {
+  background-color: #e7f9fc;
+  border-radius: 16px;
+  padding: 10px 14px;
+  margin-top: 18px;
+}
+
+.inquiry-card__answer-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: $admin-accent;
+  margin-bottom: 4px;
+}
+
+.inquiry-card__answer-text {
+  font-size: 14px;
+  color: $admin-text;
+}
+
+/* tlačítka vpravo */
+
+.inquiry-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 999px;
+  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+
+  &.btn-outline {
+    background-color: #f9fafb;
+    border: 1px solid $admin-border;
+    color: $admin-text;
+
+    &:hover {
+      background-color: #f3f4f6;
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.10);
+      transform: translateY(-1px);
+    }
+  }
+
+  &.btn-icon {
+    padding: 8px;
+    width: 36px;
+    justify-content: center;
+  }
+
+  &.btn-danger {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #dc2626;
+
+    &:hover {
+      background-color: #fee2e2;
+    }
+  }
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-window {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 22px 26px 24px;
+  width: 540px;
+  max-width: 95%;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.4);
+}
+
+.modal-window__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+
+  h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.modal-window__close {
+  text-decoration: none;
+  font-size: 22px;
+  color: #9aa5b1;
+
+  &:hover {
+    color: #111827;
+  }
+}
+
+.modal-window__question {
+  background-color: #f5f4f1;
+  border-radius: 18px;
+  padding: 10px 12px 12px;
+  margin-bottom: 14px;
+}
+
+.modal-window__question-name {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.modal-window__question-text {
+  font-size: 14px;
+}
+
+.modal-window__textarea textarea {
+  width: 100%;
+  min-height: 140px;
+  border-radius: 18px;
+  border: 2px solid #03c4c9;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+}
+
+.modal-window__textarea label{
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.modal-window__input input {
+  width: 100%;
+  min-height: 20px;
+  border-radius: 18px;
+  border: 2px solid #03c4c9;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+}
+
+.modal-window__input label{
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.modal-submit {
+  margin-top: 14px;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  background-color: #03c4c9;
+  color: #ffffff;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+

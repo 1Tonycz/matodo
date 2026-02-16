@@ -1,0 +1,218 @@
+.reservations-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(15, 23, 42, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: res-modal-fade 0.2s ease-out;
+}
+
+@keyframes res-modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.reservations-modal {
+  background-color: #ffffff;
+  border-radius: 24px;
+  width: 480px;
+  max-width: 95%;
+  max-height: 92vh;
+  padding: 20px 22px 22px;
+  box-shadow: 0 20px 40px rgba(15, 23, 42, 0.45);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  animation: res-modal-pop 0.18s ease-out;
+}
+
+.reservations-modal--email {
+  width: 520px;
+}
+
+@keyframes res-modal-pop {
+  from {
+    transform: scale(0.95) translateY(6px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.reservations-modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+
+  h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: $res-admin-text;
+  }
+}
+
+.reservations-modal__close {
+  font-size: 22px;
+  line-height: 1;
+  text-decoration: none;
+  color: $res-admin-muted;
+  cursor: pointer;
+  padding-left: 8px;
+
+  &:hover {
+    color: $res-admin-text;
+  }
+}
+
+.reservations-modal__info {
+  font-size: 14px;
+  color: $res-admin-text;
+  background-color: #f5f4f1;
+  border-radius: 16px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+
+  div + div {
+    margin-top: 3px;
+  }
+}
+
+.reservations-modal__body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.reservations-form__group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 8px;
+
+  label {
+    font-size: 13px;
+    font-weight: 600;
+    color: $res-admin-text;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid $res-admin-border;
+    padding: 9px 12px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    background-color: #fdfdfd;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+
+    &:focus {
+      border-color: $res-admin-accent;
+      box-shadow: 0 0 0 2px rgba($res-admin-accent, 0.25);
+      background-color: #ffffff;
+    }
+  }
+
+  textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+}
+
+.reservations-modal__submit {
+  margin-top: 6px;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(to right, #02c4c7, #08b5ff);
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(3, 196, 201, 0.55);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 14px 34px rgba(3, 196, 201, 0.7);
+  }
+}
+// Detail modal je o něco širší
+.reservations-modal--detail {
+  width: 620px;
+  max-width: 96%;
+}
+
+// Wrapper uvnitř modalu
+.reservation-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.reservation-detail__section {
+  padding-top: 8px;
+  border-top: 1px solid $res-admin-border;
+
+  &:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+
+  h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 700;
+    color: $res-admin-text;
+  }
+}
+
+.reservation-detail__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-bottom: 6px;
+}
+
+.reservation-detail__field {
+  flex: 1 1 220px;
+  min-width: 0;
+
+  &--full {
+    flex-basis: 100%;
+  }
+}
+
+.reservation-detail__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: $res-admin-muted;
+  margin-bottom: 2px;
+}
+
+.reservation-detail__value {
+  font-size: 15px;
+  color: $res-admin-text;
+  word-break: break-word;
+}
+
+.reservation-detail__trip-link {
+  color: $res-admin-accent;
+  text-decoration: none;
+  font-weight: 600;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}

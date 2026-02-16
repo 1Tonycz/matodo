@@ -1,0 +1,80 @@
+.hero__content { max-width: 80%; gap: 2rem; }
+.hero__buttons {
+  flex-direction: row; /* desktop: vedle sebe */
+  width: auto;
+}
+.hero__button { width: auto; padding: 1rem 2rem; font-size: 1.2rem; }
+
+/* TRIPS */
+.trips { padding: gap(md, rem) gap(xxl, rem); }
+.trips__grid { grid-template-columns: 1fr 1fr 1fr; gap: 2rem; }
+.card__image img { height: 220px; }
+.card__content { padding: 1rem 1.5rem; }
+.card__meta { padding: 0.5rem 1.5rem; }
+.card__footer { padding: 1rem 1.5rem 1.5rem; }
+
+/* BENEFITS */
+.benefits { padding: gap(md, rem) gap(xxl, rem); }
+.benefits__grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2.5rem; }
+
+/* CONTACT */
+.contact { padding: gap(md, rem) gap(xxl, rem); }
+.contact__container { gap: gap(xl, rem); }
+.contact__grid { grid-template-columns: 1fr 1fr; gap: 3rem; }
+.contact-card { padding: 2rem; }
+.contact-card__icon { width: 50px; height: 50px; }
+.contact-card__icon svg { width: 26px; height: 26px; }
+.contact-card--cta .contact-card__btn { width: auto; }
+
+/* LUXURY TRANSFER */
+.luxury-transfer { padding: 80px 0; }
+.luxury-transfer .container { padding: gap(md, rem) gap(xxl, rem); }
+.luxury-transfer__header { margin-bottom: 60px; }
+.luxury-transfer__content {
+  grid-template-columns: 1.1fr 1fr;
+  gap: 60px;
+}
+.luxury-transfer__image-label {
+  bottom: 20px; left: 20px; right: 20px;
+  padding: 16px 20px;
+}
+.luxury-transfer__info { padding: 40px; }
+
+/* FEATURES */
+.features { grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 30px; }
+.feature { padding: 20px; }
+
+/* GENERIC MODAL */
+.modal__dialog {
+  width: 680px;
+  max-width: calc(100% - 48px);
+  margin: 64px auto;
+}
+.modal__header { padding: 26px 28px 10px 28px; }
+.modal__title { font-size: 24px; }
+.modal__body { padding: 10px 28px 28px 28px; }
+
+.form__grid { grid-template-columns: 1fr 1fr; gap: 18px 18px; }
+.form__actions { margin-top: 18px; }
+
+/* TRANSFER MODAL */
+.transfer-modal-backdrop {
+  align-items: center;
+  padding: 18px;
+}
+
+.transfer-modal {
+  width: 680px;
+  max-width: 100%;
+}
+
+.transfer-modal__header { padding: 18px 20px 12px; }
+.transfer-modal__header h2 { font-size: 26px; }
+.transfer-modal__body { padding: 0 20px 18px; }
+
+.transfer-grid {
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 22px;
+}
+
+.transfer-submit { grid-column: 1 / -1; }
